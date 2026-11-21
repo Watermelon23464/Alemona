@@ -95,6 +95,11 @@ export default new createRouter({
 			},
 		},
 		{
+			path: '/settings',
+			name: 'Settings',
+			component: () => import('@/pages/Settings.vue'),
+		},
+		{
 			path: '/terracotta',
 			name: 'Terracotta',
 			component: () => import('@/pages/Terracotta.vue'),

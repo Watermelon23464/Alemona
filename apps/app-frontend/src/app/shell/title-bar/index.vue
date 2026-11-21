@@ -3,6 +3,7 @@ import { ChevronLeftIcon, ChevronRightIcon, RightArrowIcon } from '@modrinth/ass
 import { defineMessages, IconButton, useVIntl } from '@modrinth/ui'
 import { useRouter } from 'vue-router'
 
+import AlLogo from '@/components/ui/al-logo.vue'
 import { toggleMaximizeWindow, useWindowFullscreen } from '@/composables/use-window-fullscreen'
 
 import AppActionBar from './action-bar.vue'
@@ -45,6 +46,7 @@ function onTitleBarDoubleClick(event: MouseEvent) {
 		@dblclick="onTitleBarDoubleClick"
 	>
 		<div data-tauri-drag-region class="flex min-w-0 flex-1 items-center overflow-hidden p-2">
+			<AlLogo class="pointer-events-none mr-2 size-6 shrink-0" />
 			<span
 				class="pointer-events-none flex h-7 w-auto shrink-0 select-none items-center text-[1.05rem] font-extrabold tracking-tight text-contrast"
 				>Alemona Launcher</span

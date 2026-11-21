@@ -243,11 +243,12 @@ async function createRoom() {
 }
 
 function askCloseRoom() {
+	hostModalRef.value?.hide?.()
 	closeRoomModal.value = true
 }
 
 async function confirmCloseRoom() {
-	closeRoomModal.value = false
+	closeRoomModalRef.value?.hide?.()
 	await closeRoom()
 }
 
@@ -258,7 +259,8 @@ async function closeRoom() {
 		await invoke('plugin:terracotta|terracotta_reset')
 		lastIndex = 0
 		roomState.value = { state: 'waiting', index: 0 }
-		closeHostModal()
+		hostModal.value = false
+		hostModalRemembered = false
 	} catch (error) {
 		handleError(error as Error)
 	} finally {
@@ -307,6 +309,7 @@ const hostModalRef = ref<{ show?: () => void } | null>(null)
 const joinModalRef = ref<{ show?: () => void } | null>(null)
 const successModalRef = ref<{ show?: () => void } | null>(null)
 const introModalRef = ref<{ show?: () => void } | null>(null)
+const closeRoomModalRef = ref<{ show?: () => void } | null>(null)
 
 watch(hostModal, async (open) => {
 	if (!open) return
@@ -439,7 +442,8 @@ onUnmounted(stopPolling)
 		v-if="hostModal"
 		:header="formatMessage(messages.hostModalTitle)"
 		max-width="640px"
-		:on-hide="closeHostModal"
+		:on-hide="() => undefined"
+		:on-after-hide="closeHostModal"
 	>
 		<div class="flex flex-col gap-4">
 			<template v-if="roomReady">
@@ -498,7 +502,8 @@ onUnmounted(stopPolling)
 		v-if="joinModal"
 		:header="formatMessage(messages.joinModalTitle)"
 		max-width="560px"
-		:on-hide="() => (joinModal = false)"
+		:on-hide="() => undefined"
+		:on-after-hide="() => (joinModal = false)"
 	>
 		<div class="flex flex-col gap-4">
 			<p class="m-0 text-sm leading-6 text-primary">
@@ -513,7 +518,7 @@ onUnmounted(stopPolling)
 		</div>
 		<template #actions>
 			<div class="ml-auto flex w-full items-center justify-end gap-2">
-				<Button @click="joinModal = false">{{ formatMessage(messages.close) }}</Button>
+				<Button @click="joinModalRef?.hide?.()">{{ formatMessage(messages.close) }}</Button>
 				<Button
 					type="colored"
 					color="brand"
@@ -531,14 +536,15 @@ onUnmounted(stopPolling)
 		v-if="successModal"
 		:header="formatMessage(messages.successTitle)"
 		max-width="460px"
-		:on-hide="() => (successModal = false)"
+		:on-hide="() => undefined"
+		:on-after-hide="() => (successModal = false)"
 	>
 		<p class="m-0 text-sm leading-6 text-primary">
 			{{ formatMessage(messages.successBody) }}
 		</p>
 		<template #actions>
 			<div class="ml-auto flex w-full items-center justify-end gap-2">
-				<Button type="colored" color="brand" @click="successModal = false">
+				<Button type="colored" color="brand" @click="successModalRef?.hide?.()">
 					{{ formatMessage(messages.close) }}
 				</Button>
 			</div>
@@ -551,7 +557,8 @@ onUnmounted(stopPolling)
 		:header="formatMessage(messages.warningTitle)"
 		max-width="520px"
 		:fade="'danger'"
-		:on-hide="() => (closeRoomModal = false)"
+		:on-hide="() => undefined"
+		:on-after-hide="() => (closeRoomModal = false)"
 	>
 		<p class="m-0 text-sm leading-6 text-primary">
 			{{ formatMessage(messages.warningBody) }}
@@ -570,7 +577,8 @@ onUnmounted(stopPolling)
 		v-if="showIntro"
 		:header="formatMessage(messages.introTitle)"
 		max-width="820px"
-		:on-hide="() => (showIntro = false)"
+		:on-hide="() => undefined"
+		:on-after-hide="() => (showIntro = false)"
 	>
 		<div class="flex flex-col gap-4">
 			<p class="m-0 text-sm leading-6 text-primary">{{ formatMessage(messages.introBody) }}</p>
@@ -591,7 +599,7 @@ onUnmounted(stopPolling)
 		</div>
 		<template #actions>
 			<div class="ml-auto flex w-full items-center justify-end gap-2">
-				<Button :disabled="downloading" @click="showIntro = false">
+				<Button :disabled="downloading" @click="introModalRef?.hide?.()">
 					{{ formatMessage(messages.cancel) }}
 				</Button>
 				<Button type="colored" color="brand" :disabled="downloading" @click="download">

@@ -2082,7 +2082,8 @@ provideAppUpdateDownloadProgress(appUpdateDownload)
 			</suspense>
 			<NavButton
 				v-tooltip.right="formatMessage(commonMessages.settingsLabel)"
-				:to="settingsActions.openSettings"
+				to="/settings"
+				:is-primary="(r) => r.path === '/settings'"
 			>
 				<SettingsIcon />
 			</NavButton>
