@@ -5,6 +5,42 @@
 @import '@modrinth/ui/src/styles/tailwind-utilities.css';
 
 @font-face {
+	font-family: 'JetBrains Mono';
+	font-style: normal;
+	font-display: swap;
+	font-weight: 400;
+	src: url('../font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'JetBrains Mono';
+	font-style: normal;
+	font-display: swap;
+	font-weight: 700;
+	src: url('../font/JetBrainsMono-Bold.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'JetBrains Mono';
+	font-style: italic;
+	font-display: swap;
+	font-weight: 400;
+	src: url('../font/JetBrainsMono-Italic.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'JetBrains Mono';
+	font-style: italic;
+	font-display: swap;
+	font-weight: 700;
+	src: url('../font/JetBrainsMono-BoldItalic.woff2') format('woff2');
+}
+
+.font-jetbrains-mono {
+	font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+@font-face {
 	font-family: 'bundled-minecraft-font-mrapp';
 	font-style: normal;
 	font-display: swap;

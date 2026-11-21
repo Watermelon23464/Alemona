@@ -110,6 +110,23 @@ fn main() {
                     ),
             )
             .plugin(
+                "terracotta",
+                InlinedPlugin::new()
+                    .commands(&[
+                        "terracotta_get_install",
+                        "terracotta_install",
+                        "terracotta_launch",
+                        "terracotta_state",
+                        "terracotta_host",
+                        "terracotta_join",
+                        "terracotta_reset",
+                        "terracotta_stop",
+                    ])
+                    .default_permission(
+                        DefaultPermissionRule::AllowAllCommands,
+                    ),
+            )
+            .plugin(
                 "minecraft-skins",
                 InlinedPlugin::new()
                     .commands(&[

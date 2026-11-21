@@ -17,6 +17,7 @@ pub mod reports;
 pub mod server_address;
 pub mod settings;
 pub mod tags;
+pub mod terracotta;
 pub mod users;
 pub mod worlds;
 

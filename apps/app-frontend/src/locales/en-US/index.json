@@ -1,127 +1,4 @@
 {
-  "app.settings.resource-management.download-source.bmclapi": {
-    "message": "Use BMCLAPI"
-  },
-  "app.settings.resource-management.download-source.description": {
-    "message": "Where Minecraft game files are downloaded from. BMCLAPI is a faster mirror for mainland China."
-  },
-  "app.settings.resource-management.download-source.mojang": {
-    "message": "Use Mojang"
-  },
-  "app.settings.resource-management.download-source.title": {
-    "message": "Version download source"
-  },
-  "app.downloads.filters.all": {
-    "message": "All"
-  },
-  "app.downloads.filters.fools": {
-    "message": "April Fools"
-  },
-  "app.downloads.filters.old": {
-    "message": "Old versions"
-  },
-  "app.downloads.filters.release": {
-    "message": "Releases"
-  },
-  "app.downloads.filters.snapshot": {
-    "message": "Snapshots"
-  },
-  "app.downloads.instances.empty": {
-    "message": "No versions match your filters."
-  },
-  "app.downloads.instances.loading": {
-    "message": "Loading versions..."
-  },
-  "app.downloads.instances.search": {
-    "message": "Search Minecraft versions..."
-  },
-  "app.downloads.instances.sort.newest": {
-    "message": "Newest first"
-  },
-  "app.downloads.instances.sort.oldest": {
-    "message": "Oldest first"
-  },
-  "app.downloads.instances.subtitle": {
-    "message": "Pick a Minecraft version to set up an instance with Vanilla, Fabric, Forge, NeoForge or Quilt."
-  },
-  "app.downloads.instances.title": {
-    "message": "Instances"
-  },
-  "app.downloads.loader.empty": {
-    "message": "No {loader} versions are available for Minecraft {version}."
-  },
-  "app.downloads.loader.loading": {
-    "message": "Loading versions..."
-  },
-  "app.downloads.loader.search": {
-    "message": "Search {loader} versions..."
-  },
-  "app.downloads.loader.stable": {
-    "message": "Stable"
-  },
-  "app.downloads.loader.subtitle": {
-    "message": "Minecraft {version} · {count} versions"
-  },
-  "app.downloads.loader.title": {
-    "message": "{loader} versions"
-  },
-  "app.downloads.tabs.data-packs": {
-    "message": "Data Packs"
-  },
-  "app.downloads.tabs.instances": {
-    "message": "Instances"
-  },
-  "app.downloads.tabs.modpacks": {
-    "message": "Modpacks"
-  },
-  "app.downloads.tabs.mods": {
-    "message": "Mods"
-  },
-  "app.downloads.tabs.resource-packs": {
-    "message": "Resource Packs"
-  },
-  "app.downloads.tabs.servers": {
-    "message": "Servers"
-  },
-  "app.downloads.tabs.shaders": {
-    "message": "Shaders"
-  },
-  "app.downloads.version.available": {
-    "message": "{count} versions"
-  },
-  "app.downloads.version.custom": {
-    "message": "Custom icon"
-  },
-  "app.downloads.version.loaders": {
-    "message": "Loaders"
-  },
-  "app.downloads.version.loaders-hint": {
-    "message": "Choose a loader version to set up a modded instance."
-  },
-  "app.downloads.version.loading-loaders": {
-    "message": "Looking for loader versions..."
-  },
-  "app.downloads.version.name": {
-    "message": "Instance name"
-  },
-  "app.downloads.version.randomize": {
-    "message": "Randomize"
-  },
-  "app.downloads.version.start": {
-    "message": "Start download"
-  },
-  "app.downloads.version.starting": {
-    "message": "Creating..."
-  },
-  "app.downloads.version.unavailable": {
-    "message": "No versions for this Minecraft version"
-  },
-  "app.downloads.version.upload": {
-    "message": "Upload"
-  },
-  "app.downloads.version.use-vanilla": {
-    "message": "Use Vanilla"
-  },
   "app.action-bar.downloading-java": {
     "message": "Downloading Java {version}"
   },
@@ -521,6 +398,117 @@
   "app.download-manager.verifying": {
     "message": "Verifying"
   },
+  "app.downloads.filters.all": {
+    "message": "All"
+  },
+  "app.downloads.filters.fools": {
+    "message": "April Fools"
+  },
+  "app.downloads.filters.old": {
+    "message": "Old versions"
+  },
+  "app.downloads.filters.release": {
+    "message": "Releases"
+  },
+  "app.downloads.filters.snapshot": {
+    "message": "Snapshots"
+  },
+  "app.downloads.instances.empty": {
+    "message": "No versions match your filters."
+  },
+  "app.downloads.instances.loading": {
+    "message": "Loading versions..."
+  },
+  "app.downloads.instances.search": {
+    "message": "Search Minecraft versions..."
+  },
+  "app.downloads.instances.sort.newest": {
+    "message": "Newest first"
+  },
+  "app.downloads.instances.sort.oldest": {
+    "message": "Oldest first"
+  },
+  "app.downloads.instances.subtitle": {
+    "message": "Pick a Minecraft version to set up an instance with Vanilla, Fabric, Forge, NeoForge or Quilt."
+  },
+  "app.downloads.instances.title": {
+    "message": "Instances"
+  },
+  "app.downloads.loader.empty": {
+    "message": "No {loader} versions are available for Minecraft {version}."
+  },
+  "app.downloads.loader.loading": {
+    "message": "Loading versions..."
+  },
+  "app.downloads.loader.search": {
+    "message": "Search {loader} versions..."
+  },
+  "app.downloads.loader.stable": {
+    "message": "Stable"
+  },
+  "app.downloads.loader.subtitle": {
+    "message": "Minecraft {version} · {count} versions"
+  },
+  "app.downloads.loader.title": {
+    "message": "{loader} versions"
+  },
+  "app.downloads.tabs.data-packs": {
+    "message": "Data Packs"
+  },
+  "app.downloads.tabs.instances": {
+    "message": "Instances"
+  },
+  "app.downloads.tabs.modpacks": {
+    "message": "Modpacks"
+  },
+  "app.downloads.tabs.mods": {
+    "message": "Mods"
+  },
+  "app.downloads.tabs.resource-packs": {
+    "message": "Resource Packs"
+  },
+  "app.downloads.tabs.servers": {
+    "message": "Servers"
+  },
+  "app.downloads.tabs.shaders": {
+    "message": "Shaders"
+  },
+  "app.downloads.version.available": {
+    "message": "{count} versions"
+  },
+  "app.downloads.version.custom": {
+    "message": "Custom icon"
+  },
+  "app.downloads.version.loaders": {
+    "message": "Loaders"
+  },
+  "app.downloads.version.loaders-hint": {
+    "message": "Choose a loader version to set up a modded instance."
+  },
+  "app.downloads.version.loading-loaders": {
+    "message": "Looking for loader versions..."
+  },
+  "app.downloads.version.name": {
+    "message": "Instance name"
+  },
+  "app.downloads.version.randomize": {
+    "message": "Randomize"
+  },
+  "app.downloads.version.start": {
+    "message": "Start download"
+  },
+  "app.downloads.version.starting": {
+    "message": "Creating..."
+  },
+  "app.downloads.version.unavailable": {
+    "message": "No versions for this Minecraft version"
+  },
+  "app.downloads.version.upload": {
+    "message": "Upload"
+  },
+  "app.downloads.version.use-vanilla": {
+    "message": "Use Vanilla"
+  },
   "app.error.state-init.open-backups-folder": {
     "message": "Open backups folder"
   },
@@ -611,6 +599,9 @@
   "app.file-download.waiting": {
     "message": "Waiting for the server…"
   },
+  "app.home.instance.never-played": {
+    "message": "Never played"
+  },
   "app.home.jump-back-in.actions.label": {
     "message": "Instance actions"
   },
@@ -637,6 +628,30 @@
   },
   "app.home.jump-back-in.view-instance": {
     "message": "View instance"
+  },
+  "app.home.news": {
+    "message": "Recent news"
+  },
+  "app.home.news.collapse": {
+    "message": "Collapse"
+  },
+  "app.home.news.empty": {
+    "message": "No news right now."
+  },
+  "app.home.news.expand-more": {
+    "message": "Expand More"
+  },
+  "app.home.quick-start": {
+    "message": "Quick start"
+  },
+  "app.home.quick-start.empty": {
+    "message": "You have no instances yet."
+  },
+  "app.home.tagline": {
+    "message": "Launch and manage Minecraft with Alemona Launcher, download content, and explore more features through Minecraft Explore!"
+  },
+  "app.home.welcome": {
+    "message": "Welcome"
   },
   "app.hosting.update-required.description": {
     "message": "You need to update to use Alemona Launcher Hosting through the Alemona Launcher"
@@ -1073,6 +1088,15 @@
   "app.instance.worlds.search-worlds-placeholder": {
     "message": "Search {count} worlds..."
   },
+  "app.instances.empty": {
+    "message": "No instances yet"
+  },
+  "app.instances.new": {
+    "message": "New instance"
+  },
+  "app.instances.title": {
+    "message": "Instances"
+  },
   "app.java-detection.cancel": {
     "message": "Cancel"
   },
@@ -1193,12 +1217,7 @@
   "app.library.group.edit-name": {
     "message": "Edit group name"
   },
-  "app.library.instance.never-played": {
-    "message": "Never played"
-  },
-  "app.library.toolbar.instance-count": {
-    "message": "{count} instances"
-  },  "app.library.group.empty": {
+  "app.library.group.empty": {
     "message": "Drag and drop to add instances."
   },
   "app.library.group.expand": {
@@ -1315,6 +1334,9 @@
   "app.library.instance.loading": {
     "message": "Instance is loading..."
   },
+  "app.library.instance.never-played": {
+    "message": "Never played"
+  },
   "app.library.instance.new": {
     "message": "New instance"
   },
@@ -1383,6 +1405,12 @@
   },
   "app.library.title": {
     "message": "Library"
+  },
+  "app.library.toolbar.instance-count": {
+    "message": "{count} instances"
+  },
+  "app.minecraft-accounts.header": {
+    "message": "Minecraft accounts"
   },
   "app.modal.install-to-play.additional-context": {
     "message": "Additional context"
@@ -1513,8 +1541,14 @@
   "app.nav.home": {
     "message": "Home"
   },
+  "app.nav.instances": {
+    "message": "Instances"
+  },
   "app.nav.loading-profile": {
     "message": "Loading profile..."
+  },
+  "app.nav.manage-minecraft-accounts": {
+    "message": "Manage Minecraft accounts"
   },
   "app.nav.modrinth-account": {
     "message": "Alemona Launcher account"
@@ -1533,6 +1567,9 @@
   },
   "app.nav.switch-account": {
     "message": "Switch account"
+  },
+  "app.nav.terracotta": {
+    "message": "Terracotta Networking"
   },
   "app.nav.upgrade-to-modrinth-plus": {
     "message": "Upgrade to Alemona Launcher+"
@@ -1782,6 +1819,12 @@
   },
   "app.settings.app-version": {
     "message": "Alemona Launcher {version}"
+  },
+  "app.settings.appearance.quick-start-page": {
+    "message": "Quick start page"
+  },
+  "app.settings.appearance.quick-start-page.description": {
+    "message": "Show the quick start screen on the home page."
   },
   "app.settings.default-instance-options.environment-variables.description": {
     "message": "Environment variables set when launching an instance."
@@ -2941,6 +2984,18 @@
   "app.settings.resource-management.debug-info.title": {
     "message": "Debug info"
   },
+  "app.settings.resource-management.download-source.bmclapi": {
+    "message": "Use BMCLAPI"
+  },
+  "app.settings.resource-management.download-source.description": {
+    "message": "Where Minecraft game files are downloaded from. BMCLAPI is a faster mirror for mainland China."
+  },
+  "app.settings.resource-management.download-source.mojang": {
+    "message": "Use Mojang"
+  },
+  "app.settings.resource-management.download-source.title": {
+    "message": "Version download source"
+  },
   "app.settings.resource-management.maximum-concurrent-downloads.description": {
     "message": "Number of files the app can download at once. Lower this if downloads are unreliable on your connection. Requires an app restart."
   },
@@ -3021,6 +3076,12 @@
   },
   "app.settings.resource-management.store.verified": {
     "message": "Verification complete"
+  },
+  "app.settings.resource-management.version-isolation.description": {
+    "message": "Isolate all your Minecraft versions so that they do not interact with each other. If you need mods or modpacks, be sure to enable this feature."
+  },
+  "app.settings.resource-management.version-isolation.title": {
+    "message": "Version Isolation"
   },
   "app.settings.sidebar.label.instance-defaults": {
     "message": "Instance defaults"
@@ -3636,6 +3697,219 @@
   },
   "app.synced-packs.resource-packs.title": {
     "message": "Synced resource packs"
+  },
+  "app.terracotta.cancel": {
+    "message": "Not now"
+  },
+  "app.terracotta.close": {
+    "message": "Close"
+  },
+  "app.terracotta.close.room": {
+    "message": "Close room"
+  },
+  "app.terracotta.copied": {
+    "message": "Invitation code copied"
+  },
+  "app.terracotta.copy.invite": {
+    "message": "Copy invitation code"
+  },
+  "app.terracotta.current-state": {
+    "message": "Status"
+  },
+  "app.terracotta.difficulty": {
+    "message": "NAT difficulty: {value}"
+  },
+  "app.terracotta.direct.label": {
+    "message": "Direct address"
+  },
+  "app.terracotta.download": {
+    "message": "Download"
+  },
+  "app.terracotta.downloading": {
+    "message": "Downloading..."
+  },
+  "app.terracotta.exception.0": {
+    "message": "Could not reach the host: the room is closed or the network is unstable."
+  },
+  "app.terracotta.exception.1": {
+    "message": "The connection to the host was interrupted."
+  },
+  "app.terracotta.exception.2": {
+    "message": "The Terracotta guest side crashed."
+  },
+  "app.terracotta.exception.3": {
+    "message": "The Terracotta host side crashed."
+  },
+  "app.terracotta.exception.4": {
+    "message": "The host left the world, so the room was closed."
+  },
+  "app.terracotta.exception.5": {
+    "message": "Terracotta protocol error, please report it to its developers."
+  },
+  "app.terracotta.folder.label": {
+    "message": "Install folder"
+  },
+  "app.terracotta.guest.card": {
+    "message": "I want to join"
+  },
+  "app.terracotta.guest.card.body": {
+    "message": "Join a friend's world with the ID they gave you and play together!"
+  },
+  "app.terracotta.host.action": {
+    "message": "Create room"
+  },
+  "app.terracotta.host.card": {
+    "message": "I want to host"
+  },
+  "app.terracotta.host.card.body": {
+    "message": "Open your LAN game to the internet with Terracotta, then invite your friends into your world."
+  },
+  "app.terracotta.host.hint": {
+    "message": "Start Minecraft, open your world and allow it on the local network first."
+  },
+  "app.terracotta.host.modal.title": {
+    "message": "Create a room"
+  },
+  "app.terracotta.host.ready": {
+    "message": "Copy your invitation code and send it to your friends. They can join with HMCL, PCL CE, Alemona or any launcher with Terracotta support through the \"I want to join\" feature."
+  },
+  "app.terracotta.host.waiting": {
+    "message": "You need to open a Minecraft world and allow it on the local network."
+  },
+  "app.terracotta.intro.auto": {
+    "message": "If you click download, Alemona creates the needed files and runs them every time the multiplayer feature is enabled. Download speed varies, so you can also get them from the"
+  },
+  "app.terracotta.intro.body": {
+    "message": "Terracotta is a third-party program! Report problems through its own channels; Alemona does not guarantee that it works."
+  },
+  "app.terracotta.intro.disclaim": {
+    "message": "If the multiplayer feature breaks, URLA and Alemona accept no responsibility."
+  },
+  "app.terracotta.intro.title": {
+    "message": "Download the Terracotta Networking files"
+  },
+  "app.terracotta.join.action": {
+    "message": "Join"
+  },
+  "app.terracotta.join.card": {
+    "message": "Join a room"
+  },
+  "app.terracotta.join.description": {
+    "message": "Enter the invitation code you received in the format X/XXXX-XXXX-XXXX-XXXX, then join through Minecraft."
+  },
+  "app.terracotta.join.hint": {
+    "message": "Paste the room code the host shared with you."
+  },
+  "app.terracotta.join.modal.title": {
+    "message": "Join a room"
+  },
+  "app.terracotta.join.placeholder": {
+    "message": "X/XXXX-XXXX-XXXX-XXXX"
+  },
+  "app.terracotta.members.label": {
+    "message": "Players"
+  },
+  "app.terracotta.name.label": {
+    "message": "Your display name"
+  },
+  "app.terracotta.not.running": {
+    "message": "Not running"
+  },
+  "app.terracotta.note": {
+    "message": "The Terracotta files are not distributed with Alemona; they are downloaded from its official GitHub release when you ask for them."
+  },
+  "app.terracotta.official-site": {
+    "message": "official website download"
+  },
+  "app.terracotta.player.name": {
+    "message": "Player"
+  },
+  "app.terracotta.player.role": {
+    "message": "Role"
+  },
+  "app.terracotta.players": {
+    "message": "Players in the room"
+  },
+  "app.terracotta.redownload": {
+    "message": "Download again"
+  },
+  "app.terracotta.reset": {
+    "message": "Back to idle"
+  },
+  "app.terracotta.role.guest": {
+    "message": "Guest"
+  },
+  "app.terracotta.role.host": {
+    "message": "Host"
+  },
+  "app.terracotta.role.local": {
+    "message": "This computer"
+  },
+  "app.terracotta.room.copied": {
+    "message": "Room code copied"
+  },
+  "app.terracotta.room.copy": {
+    "message": "Copy"
+  },
+  "app.terracotta.running": {
+    "message": "Running (port {port})"
+  },
+  "app.terracotta.state.exception": {
+    "message": "Something broke"
+  },
+  "app.terracotta.state.guest-connecting": {
+    "message": "Connecting to the host..."
+  },
+  "app.terracotta.state.guest-ok": {
+    "message": "Joined the room"
+  },
+  "app.terracotta.state.host-ok": {
+    "message": "Room is ready"
+  },
+  "app.terracotta.state.host-scanning": {
+    "message": "Scanning this computer for an open world..."
+  },
+  "app.terracotta.state.host-starting": {
+    "message": "Creating the room..."
+  },
+  "app.terracotta.state.waiting": {
+    "message": "Idle"
+  },
+  "app.terracotta.status.installed": {
+    "message": "Downloaded"
+  },
+  "app.terracotta.status.label": {
+    "message": "Status"
+  },
+  "app.terracotta.status.missing": {
+    "message": "Not downloaded"
+  },
+  "app.terracotta.stop": {
+    "message": "Stop Terracotta"
+  },
+  "app.terracotta.subtitle": {
+    "message": "Host a world for your friends through Terracotta"
+  },
+  "app.terracotta.success.body": {
+    "message": "You joined the room network, now join the room through Minecraft."
+  },
+  "app.terracotta.success.title": {
+    "message": "Success!"
+  },
+  "app.terracotta.title": {
+    "message": "Terracotta Networking"
+  },
+  "app.terracotta.version.label": {
+    "message": "Version"
+  },
+  "app.terracotta.warning.body": {
+    "message": "If you close the room, every player inside will be kicked out and the room shuts down for good!"
+  },
+  "app.terracotta.warning.confirm": {
+    "message": "I know what I am doing"
+  },
+  "app.terracotta.warning.title": {
+    "message": "This is your last warning"
   },
   "app.update-popup.body.download-complete": {
     "message": "Alemona Launcher v{version} has finished downloading. Reload to update now, or automatically when you close Alemona Launcher."
@@ -4606,6 +4880,9 @@
   "instance.worlds.create_shortcut": {
     "message": "Create shortcut"
   },
+  "instance.worlds.desync_server": {
+    "message": "Desync"
+  },
   "instance.worlds.desync-server.description": {
     "message": "Do you want to keep this server in other synced instances, or remove it from them?"
   },
@@ -4617,9 +4894,6 @@
   },
   "instance.worlds.desync-server.title": {
     "message": "Desync server"
-  },
-  "instance.worlds.desync_server": {
-    "message": "Desync"
   },
   "instance.worlds.dont_show_on_home": {
     "message": "Don't show on Home"
@@ -4674,6 +4948,33 @@
   },
   "minecraft-account.add-account": {
     "message": "Add account"
+  },
+  "minecraft-account.add.choose-title": {
+    "message": "Choose account type"
+  },
+  "minecraft-account.add.confirm": {
+    "message": "Create"
+  },
+  "minecraft-account.add.microsoft": {
+    "message": "Microsoft account"
+  },
+  "minecraft-account.add.name-hint": {
+    "message": "Please do not use Chinese characters or special characters. Prefer letters, numbers and underscores."
+  },
+  "minecraft-account.add.name-invalid": {
+    "message": "Use 3-16 letters, numbers or underscores."
+  },
+  "minecraft-account.add.name-label": {
+    "message": "Account name"
+  },
+  "minecraft-account.add.name-placeholder": {
+    "message": "For example: Steve_123"
+  },
+  "minecraft-account.add.offline": {
+    "message": "Offline account"
+  },
+  "minecraft-account.add.offline-title": {
+    "message": "Create offline account"
   },
   "minecraft-account.label": {
     "message": "Minecraft account"
@@ -4776,89 +5077,5 @@
   },
   "settings.sidebar.label.display": {
     "message": "Display"
-  },
-  "app.nav.manage-minecraft-accounts": {
-    "message": "Manage Minecraft accounts"
-  },
-  "app.minecraft-accounts.header": {
-    "message": "Minecraft accounts"
-  },
-  "minecraft-account.add.choose-title": {
-    "message": "Choose account type"
-  },
-  "minecraft-account.add.microsoft": {
-    "message": "Microsoft account"
-  },
-  "minecraft-account.add.offline": {
-    "message": "Offline account"
-  },
-  "minecraft-account.add.offline-title": {
-    "message": "Create offline account"
-  },
-  "minecraft-account.add.name-label": {
-    "message": "Account name"
-  },
-  "minecraft-account.add.name-placeholder": {
-    "message": "For example: Steve_123"
-  },
-  "minecraft-account.add.name-hint": {
-    "message": "Please do not use Chinese characters or special characters. Prefer letters, numbers and underscores."
-  },
-  "minecraft-account.add.name-invalid": {
-    "message": "Use 3-16 letters, numbers or underscores."
-  },
-  "minecraft-account.add.confirm": {
-    "message": "Create"
-  },
-  "app.nav.instances": {
-    "message": "Instances"
-  },
-  "app.instances.title": {
-    "message": "Instances"
-  },
-  "app.instances.new": {
-    "message": "New instance"
-  },
-  "app.instances.empty": {
-    "message": "No instances yet"
-  },
-  "app.settings.appearance.quick-start-page": {
-    "message": "Quick start page"
-  },
-  "app.settings.appearance.quick-start-page.description": {
-    "message": "Show the quick start screen on the home page."
-  },
-  "app.home.welcome": {
-    "message": "Welcome"
-  },
-  "app.home.quick-start": {
-    "message": "Quick start"
-  },
-  "app.home.quick-start.empty": {
-    "message": "You have no instances yet."
-  },
-  "app.home.news": {
-    "message": "Recent news"
-  },
-  "app.home.news.empty": {
-    "message": "No news right now."
-  },
-  "app.home.instance.never-played": {
-    "message": "Never played"
-  },
-  "app.home.tagline": {
-    "message": "Launch and manage Minecraft with Alemona Launcher, download content, and explore more features through Minecraft Explore!"
-  },
-  "app.home.news.expand-more": {
-    "message": "Expand More"
-  },
-  "app.home.news.collapse": {
-    "message": "Collapse"
-  },
-  "app.settings.resource-management.version-isolation.title": {
-    "message": "Version Isolation"
-  },
-  "app.settings.resource-management.version-isolation.description": {
-    "message": "Isolate all your Minecraft versions so that they do not interact with each other. If you need mods or modpacks, be sure to enable this feature."
   }
 }

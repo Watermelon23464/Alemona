@@ -10,7 +10,6 @@ import {
 	PlayIcon,
 	PlusIcon,
 	RefreshCwIcon,
-	ServerStackIcon,
 	SettingsIcon,
 	ShirtIcon,
 	SpinnerIcon,
@@ -573,9 +572,9 @@ const messages = defineMessages({
 		id: 'app.nav.home',
 		defaultMessage: 'Home',
 	},
-	modrinthHosting: {
-		id: 'app.nav.modrinth-hosting',
-		defaultMessage: 'Alemona Launcher Hosting',
+	terracotta: {
+		id: 'app.nav.terracotta',
+		defaultMessage: 'Terracotta Networking',
 	},
 	screenshots: {
 		id: 'app.nav.screenshots',
@@ -2055,16 +2054,20 @@ provideAppUpdateDownloadProgress(appUpdateDownload)
 				</svg>
 			</NavButton>
 			<NavButton
-				v-tooltip.right="formatMessage(messages.modrinthHosting)"
-				to="/hosting/manage"
-				:is-primary="(r) => r.path === '/hosting/manage' || r.path === '/hosting/manage/'"
-				:is-subpage="
-					(r) =>
-						(r.path.startsWith('/hosting/manage/') && r.path !== '/hosting/manage/') ||
-						((r.path.startsWith('/browse') || r.path.startsWith('/project')) && r.query.sid)
-				"
+				v-tooltip.right="formatMessage(messages.terracotta)"
+				to="/terracotta"
+				:is-primary="(r) => r.path === '/terracotta'"
 			>
-				<ServerStackIcon />
+				<svg
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="1.8"
+					class="size-6"
+				>
+					<path d="M12 2.6 21 7.4v9.2L12 21.4 3 16.6V7.4z" />
+					<path d="m3 7.4 9 4.8 9-4.8M12 12.2v9.2" />
+				</svg>
 			</NavButton>
 			<suspense>
 				<QuickInstanceSwitcher>

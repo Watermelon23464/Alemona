@@ -1,127 +1,4 @@
 {
-  "app.settings.resource-management.download-source.bmclapi": {
-    "message": "使用 BMCLAPI"
-  },
-  "app.settings.resource-management.download-source.description": {
-    "message": "Minecraft 游戏文件的下载来源。BMCLAPI 是国内更快的镜像。"
-  },
-  "app.settings.resource-management.download-source.mojang": {
-    "message": "使用 Mojang"
-  },
-  "app.settings.resource-management.download-source.title": {
-    "message": "版本下载源"
-  },
-  "app.downloads.filters.all": {
-    "message": "全部"
-  },
-  "app.downloads.filters.fools": {
-    "message": "愚人节版"
-  },
-  "app.downloads.filters.old": {
-    "message": "远古版"
-  },
-  "app.downloads.filters.release": {
-    "message": "正式版"
-  },
-  "app.downloads.filters.snapshot": {
-    "message": "预览版"
-  },
-  "app.downloads.instances.empty": {
-    "message": "没有符合筛选条件的版本。"
-  },
-  "app.downloads.instances.loading": {
-    "message": "正在获取版本列表..."
-  },
-  "app.downloads.instances.search": {
-    "message": "搜索 Minecraft 版本..."
-  },
-  "app.downloads.instances.sort.newest": {
-    "message": "时间最晚"
-  },
-  "app.downloads.instances.sort.oldest": {
-    "message": "时间最早"
-  },
-  "app.downloads.instances.subtitle": {
-    "message": "选择一个 Minecraft 版本，创建 Vanilla、Fabric、Forge、NeoForge 或 Quilt 实例。"
-  },
-  "app.downloads.instances.title": {
-    "message": "实例"
-  },
-  "app.downloads.loader.empty": {
-    "message": "{loader} 没有适配 Minecraft {version} 的版本。"
-  },
-  "app.downloads.loader.loading": {
-    "message": "正在获取版本列表..."
-  },
-  "app.downloads.loader.search": {
-    "message": "搜索 {loader} 版本..."
-  },
-  "app.downloads.loader.stable": {
-    "message": "稳定"
-  },
-  "app.downloads.loader.subtitle": {
-    "message": "Minecraft {version} · {count} 个版本"
-  },
-  "app.downloads.loader.title": {
-    "message": "{loader} 版本"
-  },
-  "app.downloads.tabs.data-packs": {
-    "message": "数据包"
-  },
-  "app.downloads.tabs.instances": {
-    "message": "实例"
-  },
-  "app.downloads.tabs.modpacks": {
-    "message": "整合包"
-  },
-  "app.downloads.tabs.mods": {
-    "message": "模组"
-  },
-  "app.downloads.tabs.resource-packs": {
-    "message": "资源包"
-  },
-  "app.downloads.tabs.servers": {
-    "message": "服务器"
-  },
-  "app.downloads.tabs.shaders": {
-    "message": "光影包"
-  },
-  "app.downloads.version.available": {
-    "message": "{count} 个可用版本"
-  },
-  "app.downloads.version.custom": {
-    "message": "自定义图标"
-  },
-  "app.downloads.version.loaders": {
-    "message": "加载器"
-  },
-  "app.downloads.version.loaders-hint": {
-    "message": "选择加载器版本即可创建带模组的实例。"
-  },
-  "app.downloads.version.loading-loaders": {
-    "message": "正在检索加载器版本..."
-  },
-  "app.downloads.version.name": {
-    "message": "实例名称"
-  },
-  "app.downloads.version.randomize": {
-    "message": "随机生成"
-  },
-  "app.downloads.version.start": {
-    "message": "开始下载"
-  },
-  "app.downloads.version.starting": {
-    "message": "正在创建..."
-  },
-  "app.downloads.version.unavailable": {
-    "message": "该版本没有可用版本"
-  },
-  "app.downloads.version.upload": {
-    "message": "上传"
-  },
-  "app.downloads.version.use-vanilla": {
-    "message": "使用 Vanilla"
-  },
   "app.action-bar.downloading-java": {
     "message": "正在下载 Java {version}"
   },
@@ -386,11 +263,11 @@
   "app.browse.project-type.data-packs": {
     "message": "数据包"
   },
-  "app.browse.project-type.modpacks": {
-    "message": "整合包"
-  },
   "app.browse.project-type.instances": {
     "message": "实例"
+  },
+  "app.browse.project-type.modpacks": {
+    "message": "整合包"
   },
   "app.browse.project-type.mods": {
     "message": "模组"
@@ -524,6 +401,117 @@
   "app.download-manager.verifying": {
     "message": "正在验证"
   },
+  "app.downloads.filters.all": {
+    "message": "全部"
+  },
+  "app.downloads.filters.fools": {
+    "message": "愚人节版"
+  },
+  "app.downloads.filters.old": {
+    "message": "远古版"
+  },
+  "app.downloads.filters.release": {
+    "message": "正式版"
+  },
+  "app.downloads.filters.snapshot": {
+    "message": "预览版"
+  },
+  "app.downloads.instances.empty": {
+    "message": "没有符合筛选条件的版本。"
+  },
+  "app.downloads.instances.loading": {
+    "message": "正在获取版本列表..."
+  },
+  "app.downloads.instances.search": {
+    "message": "搜索 Minecraft 版本..."
+  },
+  "app.downloads.instances.sort.newest": {
+    "message": "时间最晚"
+  },
+  "app.downloads.instances.sort.oldest": {
+    "message": "时间最早"
+  },
+  "app.downloads.instances.subtitle": {
+    "message": "选择一个 Minecraft 版本，创建 Vanilla、Fabric、Forge、NeoForge 或 Quilt 实例。"
+  },
+  "app.downloads.instances.title": {
+    "message": "实例"
+  },
+  "app.downloads.loader.empty": {
+    "message": "{loader} 没有适配 Minecraft {version} 的版本。"
+  },
+  "app.downloads.loader.loading": {
+    "message": "正在获取版本列表..."
+  },
+  "app.downloads.loader.search": {
+    "message": "搜索 {loader} 版本..."
+  },
+  "app.downloads.loader.stable": {
+    "message": "稳定"
+  },
+  "app.downloads.loader.subtitle": {
+    "message": "Minecraft {version} · {count} 个版本"
+  },
+  "app.downloads.loader.title": {
+    "message": "{loader} 版本"
+  },
+  "app.downloads.tabs.data-packs": {
+    "message": "数据包"
+  },
+  "app.downloads.tabs.instances": {
+    "message": "实例"
+  },
+  "app.downloads.tabs.modpacks": {
+    "message": "整合包"
+  },
+  "app.downloads.tabs.mods": {
+    "message": "模组"
+  },
+  "app.downloads.tabs.resource-packs": {
+    "message": "资源包"
+  },
+  "app.downloads.tabs.servers": {
+    "message": "服务器"
+  },
+  "app.downloads.tabs.shaders": {
+    "message": "光影包"
+  },
+  "app.downloads.version.available": {
+    "message": "{count} 个可用版本"
+  },
+  "app.downloads.version.custom": {
+    "message": "自定义图标"
+  },
+  "app.downloads.version.loaders": {
+    "message": "加载器"
+  },
+  "app.downloads.version.loaders-hint": {
+    "message": "选择加载器版本即可创建带模组的实例。"
+  },
+  "app.downloads.version.loading-loaders": {
+    "message": "正在检索加载器版本..."
+  },
+  "app.downloads.version.name": {
+    "message": "实例名称"
+  },
+  "app.downloads.version.randomize": {
+    "message": "随机生成"
+  },
+  "app.downloads.version.start": {
+    "message": "开始下载"
+  },
+  "app.downloads.version.starting": {
+    "message": "正在创建..."
+  },
+  "app.downloads.version.unavailable": {
+    "message": "该版本没有可用版本"
+  },
+  "app.downloads.version.upload": {
+    "message": "上传"
+  },
+  "app.downloads.version.use-vanilla": {
+    "message": "使用 Vanilla"
+  },
   "app.error.state-init.open-backups-folder": {
     "message": "打开备份文件夹"
   },
@@ -605,6 +593,24 @@
   "app.features-settings.sync-across-devices.title": {
     "message": "跨设备同步功能"
   },
+  "app.home.instance.actions": {
+    "message": "实例操作"
+  },
+  "app.home.instance.never-played": {
+    "message": "从未游玩"
+  },
+  "app.home.instance.open": {
+    "message": "打开实例"
+  },
+  "app.home.instance.play": {
+    "message": "开始游戏"
+  },
+  "app.home.instance.played-at": {
+    "message": "上次游玩于 {time}"
+  },
+  "app.home.instance.remove": {
+    "message": "删除实例"
+  },
   "app.home.jump-back-in.actions.label": {
     "message": "实例操作"
   },
@@ -631,6 +637,30 @@
   },
   "app.home.jump-back-in.view-instance": {
     "message": "查看实例"
+  },
+  "app.home.news": {
+    "message": "最近的新闻"
+  },
+  "app.home.news.collapse": {
+    "message": "收回"
+  },
+  "app.home.news.empty": {
+    "message": "暂时没有新闻。"
+  },
+  "app.home.news.expand-more": {
+    "message": "展开更多"
+  },
+  "app.home.quick-start": {
+    "message": "快速开始"
+  },
+  "app.home.quick-start.empty": {
+    "message": "你还没有实例。"
+  },
+  "app.home.tagline": {
+    "message": "通过 Alemona Launcher 启动并管理 Minecraft，下载内容并通过 Minecraft Explore 探索更多功能！"
+  },
+  "app.home.welcome": {
+    "message": "欢迎"
   },
   "app.hosting.update-required.description": {
     "message": "你需要更新才能通过 Alemona Launcher 使用 Alemona Launcher Hosting"
@@ -1067,6 +1097,15 @@
   "app.instance.worlds.search-worlds-placeholder": {
     "message": "搜索 {count} 个世界……"
   },
+  "app.instances.empty": {
+    "message": "还没有实例"
+  },
+  "app.instances.new": {
+    "message": "新建实例"
+  },
+  "app.instances.title": {
+    "message": "实例库"
+  },
   "app.java-detection.cancel": {
     "message": "取消"
   },
@@ -1187,12 +1226,7 @@
   "app.library.group.edit-name": {
     "message": "编辑分组名称"
   },
-  "app.library.instance.never-played": {
-    "message": "从未游玩"
-  },
-  "app.library.toolbar.instance-count": {
-    "message": "{count} 个实例"
-  },  "app.library.group.empty": {
+  "app.library.group.empty": {
     "message": "拖拽以添加实例。"
   },
   "app.library.group.expand": {
@@ -1309,6 +1343,9 @@
   "app.library.instance.loading": {
     "message": "实例加载中……"
   },
+  "app.library.instance.never-played": {
+    "message": "从未游玩"
+  },
   "app.library.instance.new": {
     "message": "新建实例"
   },
@@ -1377,6 +1414,12 @@
   },
   "app.library.title": {
     "message": "实例库"
+  },
+  "app.library.toolbar.instance-count": {
+    "message": "{count} 个实例"
+  },
+  "app.minecraft-accounts.header": {
+    "message": "Minecraft 账户"
   },
   "app.modal.install-to-play.additional-context": {
     "message": "补充说明"
@@ -1501,8 +1544,14 @@
   "app.nav.home": {
     "message": "首页"
   },
+  "app.nav.instances": {
+    "message": "实例库"
+  },
   "app.nav.loading-profile": {
     "message": "个人主页加载中……"
+  },
+  "app.nav.manage-minecraft-accounts": {
+    "message": "管理 Minecraft 账户"
   },
   "app.nav.modrinth-account": {
     "message": "Alemona Launcher账户"
@@ -1521,6 +1570,9 @@
   },
   "app.nav.switch-account": {
     "message": "切换账户"
+  },
+  "app.nav.terracotta": {
+    "message": "Terracotta Networking"
   },
   "app.nav.upgrade-to-modrinth-plus": {
     "message": "升级至Alemona Launcher+"
@@ -1770,6 +1822,12 @@
   },
   "app.settings.app-version": {
     "message": "Alemona Launcher {version}"
+  },
+  "app.settings.appearance.quick-start-page": {
+    "message": "快速开始页面"
+  },
+  "app.settings.appearance.quick-start-page.description": {
+    "message": "在主页显示快速开始页面。"
   },
   "app.settings.default-instance-options.environment-variables.description": {
     "message": "启动实例时设置的环境变量。"
@@ -2929,6 +2987,18 @@
   "app.settings.resource-management.debug-info.title": {
     "message": "调试信息"
   },
+  "app.settings.resource-management.download-source.bmclapi": {
+    "message": "使用 BMCLAPI"
+  },
+  "app.settings.resource-management.download-source.description": {
+    "message": "Minecraft 游戏文件的下载来源。BMCLAPI 是国内更快的镜像。"
+  },
+  "app.settings.resource-management.download-source.mojang": {
+    "message": "使用 Mojang"
+  },
+  "app.settings.resource-management.download-source.title": {
+    "message": "版本下载源"
+  },
   "app.settings.resource-management.maximum-concurrent-downloads.description": {
     "message": "应用可同时下载的文件数量。如果您的连接下载不稳定，请降低该值。需要重新启动应用程序。"
   },
@@ -3009,6 +3079,12 @@
   },
   "app.settings.resource-management.store.verified": {
     "message": "验证完成"
+  },
+  "app.settings.resource-management.version-isolation.description": {
+    "message": "隔离你的所有 Minecraft 版本，使他们互不相通。如果你需要 Mod 或整合包，请务必打开此功能"
+  },
+  "app.settings.resource-management.version-isolation.title": {
+    "message": "版本隔离"
   },
   "app.settings.synced-options.choose-sync-source.command-history-description": {
     "message": "选择要从哪个实例复制你的命令历史记录。 此历史仅用于初始同步，您可以在其后从任何实例编辑它。"
@@ -3567,6 +3643,219 @@
   },
   "app.synced-packs.resource-packs.title": {
     "message": "同步的资源包"
+  },
+  "app.terracotta.cancel": {
+    "message": "暂不下载"
+  },
+  "app.terracotta.close": {
+    "message": "关闭"
+  },
+  "app.terracotta.close.room": {
+    "message": "关闭房间"
+  },
+  "app.terracotta.copied": {
+    "message": "邀请码已复制"
+  },
+  "app.terracotta.copy.invite": {
+    "message": "复制邀请码"
+  },
+  "app.terracotta.current-state": {
+    "message": "当前状态"
+  },
+  "app.terracotta.difficulty": {
+    "message": "NAT 连接难度：{value}"
+  },
+  "app.terracotta.direct.label": {
+    "message": "直连地址"
+  },
+  "app.terracotta.download": {
+    "message": "下载"
+  },
+  "app.terracotta.downloading": {
+    "message": "正在下载…"
+  },
+  "app.terracotta.exception.0": {
+    "message": "无法连接房主：房间已关闭或网络不稳定。"
+  },
+  "app.terracotta.exception.1": {
+    "message": "与房主的连接中断。"
+  },
+  "app.terracotta.exception.2": {
+    "message": "加入方的陶瓦联机崩溃。"
+  },
+  "app.terracotta.exception.3": {
+    "message": "房主端的陶瓦联机崩溃。"
+  },
+  "app.terracotta.exception.4": {
+    "message": "房主退出了存档，房间自动关闭。"
+  },
+  "app.terracotta.exception.5": {
+    "message": "陶瓦联机协议错误，请向它的开发者反馈。"
+  },
+  "app.terracotta.folder.label": {
+    "message": "安装目录"
+  },
+  "app.terracotta.guest.card": {
+    "message": "我想当房客"
+  },
+  "app.terracotta.guest.card.body": {
+    "message": "使用朋友给你的 ID 加入朋友的世界，与其他玩家畅玩！"
+  },
+  "app.terracotta.host.action": {
+    "message": "创建房间"
+  },
+  "app.terracotta.host.card": {
+    "message": "我想当房主"
+  },
+  "app.terracotta.host.card.body": {
+    "message": "使用陶瓦联机公开你的局域网游戏，然后邀请朋友加入你的世界"
+  },
+  "app.terracotta.host.hint": {
+    "message": "先在游戏里打开存档并对局域网开放。"
+  },
+  "app.terracotta.host.modal.title": {
+    "message": "创建房间"
+  },
+  "app.terracotta.host.ready": {
+    "message": "复制您的邀请码，然后发送给您的朋友，对方可以使用 HMCL、PCL CE、Alemona 等带有陶瓦联机功能的启动器，通过「我想当房客」功能加入您的房间！"
+  },
+  "app.terracotta.host.waiting": {
+    "message": "你需要打开 Minecraft 世界，并对局域网开放"
+  },
+  "app.terracotta.intro.auto": {
+    "message": "如果你点击下载，Alemona 会自动生成需要文件并在每次联机功能启用时自动运行。下载陶瓦联机需要文件的速度因人而异，所以你可以选择在"
+  },
+  "app.terracotta.intro.body": {
+    "message": "陶瓦联机是第三方程序！在使用过程中遇到的问题请通过相关渠道进行反馈，Alemona 不保证其可用性。"
+  },
+  "app.terracotta.intro.disclaim": {
+    "message": "如果联机功能出现问题，URLA 和 Alemona 不负任何责任。"
+  },
+  "app.terracotta.intro.title": {
+    "message": "下载 Terracotta Networking 文件"
+  },
+  "app.terracotta.join.action": {
+    "message": "加入"
+  },
+  "app.terracotta.join.card": {
+    "message": "加入房间"
+  },
+  "app.terracotta.join.description": {
+    "message": "输入其他人给您的格式为 X/XXXX-XXXX-XXXX-XXXX 的邀请码，然后通过 Minecraft 加入"
+  },
+  "app.terracotta.join.hint": {
+    "message": "粘贴房主给你的房间码。"
+  },
+  "app.terracotta.join.modal.title": {
+    "message": "加入房间"
+  },
+  "app.terracotta.join.placeholder": {
+    "message": "X/XXXX-XXXX-XXXX-XXXX"
+  },
+  "app.terracotta.members.label": {
+    "message": "玩家"
+  },
+  "app.terracotta.name.label": {
+    "message": "你的显示名"
+  },
+  "app.terracotta.not.running": {
+    "message": "未运行"
+  },
+  "app.terracotta.note": {
+    "message": "陶瓦联机的文件不会随 Alemona 一起分发，而是在你需要时从它的官方 GitHub Release 下载。"
+  },
+  "app.terracotta.official-site": {
+    "message": "官方网站下载"
+  },
+  "app.terracotta.player.name": {
+    "message": "玩家"
+  },
+  "app.terracotta.player.role": {
+    "message": "身份"
+  },
+  "app.terracotta.players": {
+    "message": "房间内的玩家"
+  },
+  "app.terracotta.redownload": {
+    "message": "重新下载"
+  },
+  "app.terracotta.reset": {
+    "message": "返回待机"
+  },
+  "app.terracotta.role.guest": {
+    "message": "房客"
+  },
+  "app.terracotta.role.host": {
+    "message": "房主"
+  },
+  "app.terracotta.role.local": {
+    "message": "本机"
+  },
+  "app.terracotta.room.copied": {
+    "message": "房间码已复制"
+  },
+  "app.terracotta.room.copy": {
+    "message": "复制"
+  },
+  "app.terracotta.running": {
+    "message": "运行中（端口 {port}）"
+  },
+  "app.terracotta.state.exception": {
+    "message": "出现异常"
+  },
+  "app.terracotta.state.guest-connecting": {
+    "message": "正在连接房主…"
+  },
+  "app.terracotta.state.guest-ok": {
+    "message": "已加入房间"
+  },
+  "app.terracotta.state.host-ok": {
+    "message": "房间已就绪"
+  },
+  "app.terracotta.state.host-scanning": {
+    "message": "正在扫描本机已开放的世界…"
+  },
+  "app.terracotta.state.host-starting": {
+    "message": "正在创建房间…"
+  },
+  "app.terracotta.state.waiting": {
+    "message": "待机"
+  },
+  "app.terracotta.status.installed": {
+    "message": "已下载"
+  },
+  "app.terracotta.status.label": {
+    "message": "状态"
+  },
+  "app.terracotta.status.missing": {
+    "message": "未下载"
+  },
+  "app.terracotta.stop": {
+    "message": "停止陶瓦联机"
+  },
+  "app.terracotta.subtitle": {
+    "message": "通过陶瓦联机把存档开给朋友玩"
+  },
+  "app.terracotta.success.body": {
+    "message": "你已经加入房间网络，请使用 Minecraft 加入房间"
+  },
+  "app.terracotta.success.title": {
+    "message": "成功！"
+  },
+  "app.terracotta.title": {
+    "message": "Terracotta Networking"
+  },
+  "app.terracotta.version.label": {
+    "message": "版本"
+  },
+  "app.terracotta.warning.body": {
+    "message": "如果你点击关闭房间，房间内的所有玩家都将会被踢出并彻底关闭！"
+  },
+  "app.terracotta.warning.confirm": {
+    "message": "我知道我在做什么"
+  },
+  "app.terracotta.warning.title": {
+    "message": "这是最后一次警告"
   },
   "app.update-popup.body.download-complete": {
     "message": "Alemona Launcher v{version} 更新已下载完成！立即重启更新，或退出时自动安装。"
@@ -4480,6 +4769,9 @@
   "instance.worlds.create_shortcut": {
     "message": "创建快捷方式"
   },
+  "instance.worlds.desync_server": {
+    "message": "取消同步"
+  },
   "instance.worlds.desync-server.description": {
     "message": "是否要在其他已同步的实例中保留此服务器，还是将它一并移除？"
   },
@@ -4491,9 +4783,6 @@
   },
   "instance.worlds.desync-server.title": {
     "message": "取消服务器同步"
-  },
-  "instance.worlds.desync_server": {
-    "message": "取消同步"
   },
   "instance.worlds.dont_show_on_home": {
     "message": "在主界面隐藏"
@@ -4548,6 +4837,33 @@
   },
   "minecraft-account.add-account": {
     "message": "添加账户"
+  },
+  "minecraft-account.add.choose-title": {
+    "message": "选择账户类型"
+  },
+  "minecraft-account.add.confirm": {
+    "message": "确定"
+  },
+  "minecraft-account.add.microsoft": {
+    "message": "Microsoft 账户"
+  },
+  "minecraft-account.add.name-hint": {
+    "message": "请不要使用中文和特殊字符，尽量使用字母，数字和下划线"
+  },
+  "minecraft-account.add.name-invalid": {
+    "message": "请使用 3-16 位字母、数字或下划线"
+  },
+  "minecraft-account.add.name-label": {
+    "message": "账户名称"
+  },
+  "minecraft-account.add.name-placeholder": {
+    "message": "例如：Steve_123"
+  },
+  "minecraft-account.add.offline": {
+    "message": "离线账户"
+  },
+  "minecraft-account.add.offline-title": {
+    "message": "创建离线账户"
   },
   "minecraft-account.label": {
     "message": "Minecraft 账户"
@@ -4650,104 +4966,5 @@
   },
   "settings.sidebar.label.display": {
     "message": "显示"
-  },
-  "app.nav.manage-minecraft-accounts": {
-    "message": "管理 Minecraft 账户"
-  },
-  "app.minecraft-accounts.header": {
-    "message": "Minecraft 账户"
-  },
-  "minecraft-account.add.choose-title": {
-    "message": "选择账户类型"
-  },
-  "minecraft-account.add.microsoft": {
-    "message": "Microsoft 账户"
-  },
-  "minecraft-account.add.offline": {
-    "message": "离线账户"
-  },
-  "minecraft-account.add.offline-title": {
-    "message": "创建离线账户"
-  },
-  "minecraft-account.add.name-label": {
-    "message": "账户名称"
-  },
-  "minecraft-account.add.name-placeholder": {
-    "message": "例如：Steve_123"
-  },
-  "minecraft-account.add.name-hint": {
-    "message": "请不要使用中文和特殊字符，尽量使用字母，数字和下划线"
-  },
-  "minecraft-account.add.name-invalid": {
-    "message": "请使用 3-16 位字母、数字或下划线"
-  },
-  "minecraft-account.add.confirm": {
-    "message": "确定"
-  },
-  "app.nav.instances": {
-    "message": "实例库"
-  },
-  "app.instances.title": {
-    "message": "实例库"
-  },
-  "app.instances.new": {
-    "message": "新建实例"
-  },
-  "app.instances.empty": {
-    "message": "还没有实例"
-  },
-  "app.settings.appearance.quick-start-page": {
-    "message": "快速开始页面"
-  },
-  "app.settings.appearance.quick-start-page.description": {
-    "message": "在主页显示快速开始页面。"
-  },
-  "app.home.welcome": {
-    "message": "欢迎"
-  },
-  "app.home.quick-start": {
-    "message": "快速开始"
-  },
-  "app.home.quick-start.empty": {
-    "message": "你还没有实例。"
-  },
-  "app.home.news": {
-    "message": "最近的新闻"
-  },
-  "app.home.news.empty": {
-    "message": "暂时没有新闻。"
-  },
-  "app.home.instance.play": {
-    "message": "开始游戏"
-  },
-  "app.home.instance.actions": {
-    "message": "实例操作"
-  },
-  "app.home.instance.open": {
-    "message": "打开实例"
-  },
-  "app.home.instance.remove": {
-    "message": "删除实例"
-  },
-  "app.home.instance.played-at": {
-    "message": "上次游玩于 {time}"
-  },
-  "app.home.instance.never-played": {
-    "message": "从未游玩"
-  },
-  "app.home.tagline": {
-    "message": "通过 Alemona Launcher 启动并管理 Minecraft，下载内容并通过 Minecraft Explore 探索更多功能！"
-  },
-  "app.home.news.expand-more": {
-    "message": "展开更多"
-  },
-  "app.home.news.collapse": {
-    "message": "收回"
-  },
-  "app.settings.resource-management.version-isolation.title": {
-    "message": "版本隔离"
-  },
-  "app.settings.resource-management.version-isolation.description": {
-    "message": "隔离你的所有 Minecraft 版本，使他们互不相通。如果你需要 Mod 或整合包，请务必打开此功能"
   }
 }

@@ -95,6 +95,11 @@ export default new createRouter({
 			},
 		},
 		{
+			path: '/terracotta',
+			name: 'Terracotta',
+			component: () => import('@/pages/Terracotta.vue'),
+		},
+		{
 			path: '/skins',
 			name: 'Skin selector',
 			component: () => import('@/pages/Skins.vue'),

@@ -17,6 +17,7 @@ pub mod reports;
 pub mod settings;
 pub mod shortcuts;
 pub mod tags;
+pub mod terracotta;
 mod thumbnails;
 pub mod users;
 pub mod utils;

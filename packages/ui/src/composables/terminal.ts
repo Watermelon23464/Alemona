@@ -11,6 +11,10 @@ import {
 	shallowRef,
 } from 'vue'
 
+/** JetBrains Mono ships with the desktop app; browsers fall back to monospace. */
+const TERMINAL_FONT_FAMILY =
+	'"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace'
+
 export function getCssVar(name: string, fallback: string): string {
 	if (typeof document === 'undefined') return fallback
 	const value = getComputedStyle(document.documentElement).getPropertyValue(name).trim()
@@ -165,12 +169,18 @@ export function useTerminal(options: UseTerminalOptions): UseTerminalReturn {
 
 		await import('@xterm/xterm/css/xterm.css')
 
+		// xterm measures cell width when it is created, so make sure the font is
+		// ready first or the grid ends up sized for the fallback font.
+		if (typeof document !== 'undefined' && document.fonts) {
+			await document.fonts.load('14px "JetBrains Mono"').catch(() => undefined)
+		}
+
 		const term = new Terminal({
 			disableStdin: true,
 			scrollback: options.scrollback ?? Infinity,
 			convertEol: true,
 			smoothScrollDuration: 125,
-			fontFamily: 'monospace',
+			fontFamily: TERMINAL_FONT_FAMILY,
 			fontSize: 14,
 			lineHeight: 1.5,
 			allowProposedApi: true,

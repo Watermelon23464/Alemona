@@ -16,6 +16,20 @@ const config: Config = {
 		'!../../packages/**/node_modules/**',
 	],
 	presets: [preset],
+	theme: {
+		extend: {
+			fontFamily: {
+				mono: [
+					'JetBrains Mono',
+					'ui-monospace',
+					'SFMono-Regular',
+					'Menlo',
+					'Consolas',
+					'monospace',
+				],
+			},
+		},
+	},
 }
 
 export default config
