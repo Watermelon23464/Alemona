@@ -1826,6 +1826,15 @@
   "app.settings.appearance.quick-start-page.description": {
     "message": "Show the quick start screen on the home page."
   },
+  "app.settings.categories.display": {
+    "message": "Display"
+  },
+  "app.settings.categories.instance-defaults": {
+    "message": "Instance defaults"
+  },
+  "app.settings.categories.system": {
+    "message": "System"
+  },
   "app.settings.default-instance-options.environment-variables.description": {
     "message": "Environment variables set when launching an instance."
   },
@@ -3346,6 +3355,24 @@
   },
   "app.settings.tabs.window": {
     "message": "Window"
+  },
+  "app.settings.theme-prompt.body": {
+    "message": "Against a different background the accent colour can adapt automatically so it never clashes."
+  },
+  "app.settings.theme-prompt.confirm": {
+    "message": "Adapt my accent colour"
+  },
+  "app.settings.theme-prompt.primary": {
+    "message": "Accent"
+  },
+  "app.settings.theme-prompt.secondary": {
+    "message": "Secondary"
+  },
+  "app.settings.theme-prompt.title": {
+    "message": "Switch to a better-suited colour?"
+  },
+  "app.settings.title": {
+    "message": "Settings"
   },
   "app.settings.troubleshooting.clear-cache": {
     "message": "Clear cache"

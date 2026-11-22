@@ -110,6 +110,14 @@ fn main() {
                     ),
             )
             .plugin(
+                "al-color",
+                InlinedPlugin::new()
+                    .commands(&["al_color_load", "al_color_save"])
+                    .default_permission(
+                        DefaultPermissionRule::AllowAllCommands,
+                    ),
+            )
+            .plugin(
                 "terracotta",
                 InlinedPlugin::new()
                     .commands(&[

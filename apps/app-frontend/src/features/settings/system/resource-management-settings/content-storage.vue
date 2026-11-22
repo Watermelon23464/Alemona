@@ -381,7 +381,7 @@ function saveCacheLimit() {
 					</ul>
 				</details>
 			</Admonition>
-			<p v-else-if="clearedBytes !== null" class="m-0 text-sm text-green">
+			<p v-else-if="clearedBytes !== null" class="m-0 text-sm text-brand">
 				{{
 					clearedBytes > 0
 						? formatMessage(messages.cleared, { size: formatBytes(clearedBytes, 1) })

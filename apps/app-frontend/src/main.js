@@ -1,6 +1,6 @@
 import 'overlayscrollbars/overlayscrollbars.css'
 
-import { installTooltipDirective } from '@modrinth/ui'
+import { initAccentColor, installTooltipDirective } from '@modrinth/ui'
 import { VueQueryPlugin } from '@tanstack/vue-query'
 import { createApp } from 'vue'
 
@@ -11,6 +11,8 @@ import { debugStartup, traceStartupStep } from '@/helpers/startup-debug'
 import i18nPlugin from '@/plugins/i18n'
 import i18nDebugPlugin from '@/plugins/i18n-debug'
 import router from '@/routes'
+
+initAccentColor()
 
 debugStartup('Frontend entry module evaluated')
 const app = createApp(App)

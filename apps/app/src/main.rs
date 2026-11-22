@@ -315,6 +315,7 @@ fn main() {
         .plugin(api::jre::init())
         .plugin(api::metadata::init())
             .plugin(api::terracotta::init())
+            .plugin(api::al_color::init())
         .plugin(api::minecraft_skins::init())
         .plugin(api::process::init())
         .plugin(api::reports::init())

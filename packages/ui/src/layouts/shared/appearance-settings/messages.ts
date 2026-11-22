@@ -7,7 +7,8 @@ export const appearanceSettingsMessages = defineMessages({
 	},
 	colorThemeDescription: {
 		id: 'settings.display.theme.description',
-		defaultMessage: 'Select your preferred color theme across Alemona Launcher.',
+		defaultMessage:
+			'Choose your preferred accent colours and theme. Some themes bring their own accent colours.',
 	},
 	syncAcrossDevicesTitle: {
 		id: 'settings.display.theme.sync-across-devices',
