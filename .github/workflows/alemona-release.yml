@@ -59,9 +59,11 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build frontend
-        run: pnpm --filter @modrinth/api-client run build && pnpm --filter @modrinth/assets run build && pnpm --filter @modrinth/ui run build && pnpm --filter @modrinth/app-frontend run build
+        run: pnpm exec turbo run build --filter=@modrinth/app-frontend --force
         env:
           NODE_OPTIONS: --max-old-space-size=8192
+          TURBO_TELEMETRY_DISABLED: '1'
+          DO_NOT_TRACK: '1'
 
       - name: Build the launcher
         uses: tauri-apps/tauri-action@v0
