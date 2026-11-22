@@ -32,6 +32,8 @@ jobs:
     steps:
       - name: Check out the tag
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Install Linux system dependencies
         if: matrix.os == 'ubuntu-22.04'
@@ -57,7 +59,9 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build frontend
-        run: pnpm exec turbo run build --filter=@modrinth/app-frontend --force
+        run: pnpm --filter @modrinth/api-client run build && pnpm --filter @modrinth/assets run build && pnpm --filter @modrinth/ui run build && pnpm --filter @modrinth/app-frontend run build
+        env:
+          NODE_OPTIONS: --max-old-space-size=8192
 
       - name: Build the launcher
         uses: tauri-apps/tauri-action@v0
