@@ -15,7 +15,7 @@
 ## Today Update
 
 <picture>
-	<img alt="UPDATE" src=".github/assets/Update_a1_1.png">
+	<img alt="UPDATE" src=".github/assets/Update/Update_a1_2_1.png">
 </picture>
 
 ## Thank you. The following is the original README.

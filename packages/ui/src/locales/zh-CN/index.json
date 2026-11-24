@@ -7261,5 +7261,14 @@
 	},
 	"settings.display.accent.auto-description": {
 		"message": "开启后，修改其中一个强调色会按默认紫色配对的方式自动计算另一个颜色。"
+	},
+	"settings.display.background-images.welcome.template.copy": {
+		"message": "复制消息"
+	},
+	"settings.display.background-images.welcome.template.codes": {
+		"message": "所有标准 AL 值代码：$minecraft_name、$launcher_version、$last_play_name、$last_play_version、$last_play_time、$game_time、$last_world、$time、$date"
+	},
+	"settings.display.background-images.welcome.template.reset": {
+		"message": "恢复默认消息"
 	}
 }

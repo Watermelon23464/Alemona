@@ -2,8 +2,7 @@
 import Toggle from '#ui/components/base/Toggle.vue'
 import { IconButton } from '#ui/components/base/buttons'
 import { Textarea } from '#ui/components/base/inputs'
-import { computed, toValue } from 'vue'
-import { RestoreIcon } from '@modrinth/assets'
+import { computed, ref, toValue } from 'vue'
 
 import { useVIntl } from '#ui/composables'
 
@@ -44,6 +43,15 @@ const backgroundCustomImage = computed(() => Boolean(toValue(homeBackground?.cus
 const welcomeTemplate = homeBackground?.welcomeTemplate
 const welcomeTemplateValue = computed(() => String(toValue(welcomeTemplate?.value) ?? ''))
 const welcomeTemplateDefault = computed(() => String(welcomeTemplate?.defaultValue ?? ''))
+const welcomeCodesText = computed(() => formatMessage(messages.welcomeTemplateCodes))
+
+async function copyWelcomeTemplate(): Promise<void> {
+	try {
+		await navigator.clipboard.writeText(welcomeTemplateValue.value)
+	} catch {
+		// Clipboard access can be refused; nothing else to do about it.
+	}
+}
 </script>
 
 <template>
@@ -109,14 +117,42 @@ const welcomeTemplateDefault = computed(() => String(welcomeTemplate?.defaultVal
 					:spellcheck="false"
 					@update:model-value="welcomeTemplate.update($event ?? '')"
 				>
-					<template v-if="welcomeTemplate.defaultValue" #trailing>
-						<IconButton
-							:label="formatMessage(messages.welcomeTemplateReset)"
-							size="sm"
-							@click="welcomeTemplate.update(toValue(welcomeTemplate.defaultValue))"
-						>
-							<RestoreIcon />
-						</IconButton>
+					<template #trailing>
+						<div v-tooltip="welcomeCodesText" class="flex flex-col items-center gap-1">
+							<IconButton
+								v-if="welcomeTemplate.defaultValue"
+								:label="formatMessage(messages.welcomeTemplateReset)"
+								size="sm"
+								@click="welcomeTemplate.update(toValue(welcomeTemplate.defaultValue))"
+							>
+								<svg
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="1.8"
+									class="size-4"
+								>
+									<path d="M4 10a8 8 0 1 1 2.4 6.4" />
+									<path d="M3 5v5h5" />
+								</svg>
+							</IconButton>
+							<IconButton
+								:label="formatMessage(messages.welcomeTemplateCopy)"
+								size="sm"
+								@click="copyWelcomeTemplate()"
+							>
+								<svg
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="1.8"
+									class="size-4"
+								>
+									<rect x="9" y="9" width="11" height="11" rx="2" />
+									<path d="M15 5.5A2.5 2.5 0 0 0 12.5 3H6a3 3 0 0 0-3 3v6.5A2.5 2.5 0 0 0 5.5 15" />
+								</svg>
+							</IconButton>
+						</div>
 					</template>
 				</Textarea>
 

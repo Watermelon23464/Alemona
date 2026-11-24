@@ -4,6 +4,38 @@
 
 @import '@modrinth/ui/src/styles/tailwind-utilities.css';
 
+/* Inter ships with the launcher so the interface never depends on the host OS fonts. */
+@font-face {
+	font-family: 'Inter';
+	font-style: normal;
+	font-display: swap;
+	font-weight: 400;
+	src: url('../font/inter-400.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Inter';
+	font-style: normal;
+	font-display: swap;
+	font-weight: 500;
+	src: url('../font/inter-500.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Inter';
+	font-style: normal;
+	font-display: swap;
+	font-weight: 600;
+	src: url('../font/inter-600.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Inter';
+	font-style: normal;
+	font-display: swap;
+	font-weight: 700;
+	src: url('../font/inter-700.woff2') format('woff2');
+}
 @font-face {
 	font-family: 'JetBrains Mono';
 	font-style: normal;
@@ -45,7 +77,7 @@
 	font-style: normal;
 	font-display: swap;
 	font-weight: 400;
-	src: url('https://cdn.modrinth.com/fonts/minecraft/regular.otf') format('opentype');
+	src: url('../font/minecraft-regular.otf') format('opentype');
 }
 
 @font-face {
@@ -53,7 +85,7 @@
 	font-style: italic;
 	font-display: swap;
 	font-weight: 400;
-	src: url('https://cdn.modrinth.com/fonts/minecraft/italic.otf') format('opentype');
+	src: url('../font/minecraft-italic.otf') format('opentype');
 }
 
 @font-face {
@@ -61,7 +93,7 @@
 	font-style: normal;
 	font-display: swap;
 	font-weight: 600;
-	src: url('https://cdn.modrinth.com/fonts/minecraft/bold.otf') format('opentype');
+	src: url('../font/minecraft-bold.otf') format('opentype');
 }
 
 @font-face {
@@ -69,7 +101,7 @@
 	font-style: italic;
 	font-display: swap;
 	font-weight: 600;
-	src: url('https://cdn.modrinth.com/fonts/minecraft/bold-italic.otf') format('opentype');
+	src: url('../font/minecraft-bold-italic.otf') format('opentype');
 }
 
 .font-minecraft {

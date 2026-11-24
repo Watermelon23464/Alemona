@@ -79,6 +79,15 @@ export const appearanceSettingsMessages = defineMessages({
 		id: 'settings.display.background-images.display-welcome.description',
 		defaultMessage: 'Show the welcome message and description above your library.',
 	},
+	welcomeTemplateCopy: {
+		id: 'settings.display.background-images.welcome.template.copy',
+		defaultMessage: 'Copy message',
+	},
+	welcomeTemplateCodes: {
+		id: 'settings.display.background-images.welcome.template.codes',
+		defaultMessage:
+			'All standard AL value codes: $minecraft_name, $launcher_version, $last_play_name, $last_play_version, $last_play_time, $game_time, $last_world, $time, $date',
+	},
 	welcomeTemplateReset: {
 		id: 'settings.display.background-images.display-welcome.template.reset',
 		defaultMessage: 'Reset to the default text',

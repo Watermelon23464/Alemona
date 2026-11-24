@@ -5,16 +5,16 @@ import { ref } from 'vue'
  *
  * Mini markup:
  * - `\` toggles between text and code. Everything between two `\` is code.
- * - A code block made of `#`…`######` turns the following text into a heading
- *   level 1…6. Same for `@`…, which renders smaller subtitle text.
+ * - A code block made of `#` to `######` turns the following text into a heading
+ *   level 1 to 6. Same for `@` to `@@@@`, which renders smaller subtitle text.
  * - `$name` is replaced with a value: `minecraft_name`, `launcher_version`,
  *   `last_play_name`, `last_play_version`, `last_play_time`, `game_time`,
  *   `last_world`, `time` and `date`. `${name}` is accepted as well.
  * - Newlines and spaces are kept as typed.
  */
 export const DEFAULT_WELCOME_TEMPLATE = [
-	'\\#\\欢迎 $minecraft_name',
-	'\\@@@@\\通过 Alemona Launcher 启动并管理 Minecraft，下载内容并通过 Minecraft Explore 探索更多功能！',
+	'\\#\\Welcome $minecraft_name',
+	'\\@@@@\\ Launch and manage Minecraft with Alemona Launcher, download content, and explore more features with Minecraft Explore!',
 ].join('\n')
 
 const STORAGE_KEY = 'alemona.home-welcome-template'
