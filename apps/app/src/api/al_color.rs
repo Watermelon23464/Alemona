@@ -63,8 +63,13 @@ pub async fn al_color_save(primary: String, secondary: String) -> Result<()> {
     let mut stored = read_stored(&path).unwrap_or_default();
 
     // Preserve the previous pair before replacing it, unless it is the same one.
+    let repeated = stored
+        .history
+        .last()
+        .is_some_and(|last| last.primary == stored.primary && last.secondary == stored.secondary);
     if !stored.primary.is_empty()
         && (stored.primary != primary || stored.secondary != secondary)
+        && !repeated
     {
         stored.history.push(ColourEntry {
             primary: stored.primary.clone(),
@@ -72,8 +77,8 @@ pub async fn al_color_save(primary: String, secondary: String) -> Result<()> {
             saved_at: String::new(),
         });
         // Keep the file bounded but never lose the recent past.
-        if stored.history.len() > 200 {
-            let excess = stored.history.len() - 200;
+        if stored.history.len() > 40 {
+            let excess = stored.history.len() - 40;
             stored.history.drain(0..excess);
         }
     }

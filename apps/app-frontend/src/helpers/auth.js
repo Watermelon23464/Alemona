@@ -70,5 +70,53 @@ export async function users() {
  * @param {string} username
  */
 export async function add_offline_user(username) {
-	return await invoke('add_offline_user', { username })
+	return await invoke('plugin:auth|add_offline_user', { username })
+}
+
+/**
+ * Account metadata: kind, provider and usage counters.
+ * @returns {Promise<Array<{uuid: string, kind: string, api_root?: string, usage: number}>>}
+ */
+export async function account_metas() {
+	return await invoke('plugin:auth|account_metas')
+}
+
+/**
+ * Marks an offline account so the list can label it.
+ * @param {string} user
+ */
+export async function register_offline_account(user) {
+	return await invoke('plugin:auth|register_offline_account', { user })
+}
+
+/**
+ * Marks a Microsoft account so the list can label it.
+ * @param {string} user
+ */
+export async function register_microsoft_account(user) {
+	return await invoke('plugin:auth|register_microsoft_account', { user })
+}
+
+/**
+ * Counts one use of an account.
+ * @param {string} user
+ */
+export async function record_account_usage(user) {
+	return await invoke('plugin:auth|record_account_usage', { user })
+}
+
+/**
+ * Signs in to a Yggdrasil compatible provider (LittleSkin included).
+ * @param {string} apiRoot
+ * @param {string} username
+ * @param {string} password
+ * @param {'littleskin' | 'yggdrasil'} kind
+ */
+export async function add_yggdrasil_user(apiRoot, username, password, kind) {
+	return await invoke('plugin:auth|add_yggdrasil_user', {
+		apiRoot,
+		username,
+		password,
+		kind,
+	})
 }

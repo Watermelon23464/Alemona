@@ -1188,6 +1188,19 @@ pub async fn launch_minecraft(
         .into_iter(),
     );
 
+    // Third-party (Yggdrasil / LittleSkin) accounts need the authentication
+    // agent injected so the game accepts their session
+    match crate::accounts::launch_arguments(credentials.offline_profile.id).await {
+        Ok(extra) => {
+            for argument in extra {
+                command.arg(argument);
+            }
+        }
+        Err(error) => {
+            tracing::warn!("failed to prepare third-party authentication: {error}")
+        }
+    }
+
     // The java launcher requires access to java.lang.reflect in order to force access in to
     // whatever module the main class is in
     if java_version.parsed_version >= 9 {

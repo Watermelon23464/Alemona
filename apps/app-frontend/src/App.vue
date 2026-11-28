@@ -2089,7 +2089,8 @@ provideAppUpdateDownloadProgress(appUpdateDownload)
 			</NavButton>
 			<NavButton
 				v-tooltip.right="formatMessage(messages.manageMinecraftAccounts)"
-				:to="() => minecraftAccountsModal?.show()"
+				to="/settings/minecraft-accounts"
+				:is-primary="(r) => r.path.startsWith('/settings/minecraft-accounts')"
 			>
 				<UserIcon />
 			</NavButton>

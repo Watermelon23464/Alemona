@@ -196,7 +196,21 @@ function computeActiveIndex(): { index: number; isSubpage: boolean } {
 		}
 
 		if (decodedPath === decodedHref) {
-			return { index: i, isSubpage: false }
+			const hrefQuery = link.href.split('?')[1]
+			if (!hrefQuery) {
+				return { index: i, isSubpage: false }
+			}
+
+			// Links may carry context parameters (for example the instance an
+			// install should go to), which have to match as well.
+			const expected = new URLSearchParams(hrefQuery)
+			const matchesContext = [...expected.entries()].every(
+				([key, value]) => String(route.query[key] ?? '') === value,
+			)
+			if (matchesContext) {
+				return { index: i, isSubpage: false }
+			}
+			continue
 		}
 
 		const isSubpageMatch =
@@ -226,8 +240,8 @@ function getTabElement(index: number): HTMLElement | null {
 	return element
 }
 
-function getSliderPosition() {
-	const el = getTabElement(currentActiveIndex.value)
+function getSliderPosition(index = currentActiveIndex.value) {
+	const el = getTabElement(index)
 	const parent = scrollContainer.value
 	if (!el || !parent) return null
 
@@ -235,6 +249,20 @@ function getSliderPosition() {
 		left: el.offsetLeft,
 		top: el.offsetTop,
 		right: parent.clientWidth - el.offsetLeft - el.offsetWidth,
+		bottom: parent.clientHeight - el.offsetTop - el.offsetHeight,
+	}
+}
+
+function getCollapsedPosition(index: number) {
+	const el = getTabElement(index)
+	const parent = scrollContainer.value
+	if (!el || !parent) return null
+
+	const centre = el.offsetLeft + el.offsetWidth / 2
+	return {
+		left: centre,
+		top: el.offsetTop,
+		right: parent.clientWidth - centre,
 		bottom: parent.clientHeight - el.offsetTop - el.offsetHeight,
 	}
 }
@@ -257,7 +285,7 @@ function animateSliderTo(newPosition: {
 	right: number
 	bottom: number
 }) {
-	const STAGGER_DELAY = '175ms'
+	const STAGGER_DELAY = '60ms'
 
 	sliderDelays.value = {
 		left: newPosition.left < sliderLeft.value ? '0ms' : STAGGER_DELAY,
@@ -311,11 +339,14 @@ async function updateActiveTab() {
 	colorChangeDelayed.value = sliderReady.value && index !== currentActiveIndex.value
 	currentActiveIndex.value = index
 	subpageSelected.value = isSubpage
+	rememberActiveIndex()
 
 	if (index !== -1) {
 		positionSlider()
 	}
 }
+
+let lastActiveIndex = 0
 
 const initialActive = computeActiveIndex()
 currentActiveIndex.value = initialActive.index
@@ -323,8 +354,59 @@ subpageSelected.value = initialActive.isSubpage
 
 let resizeObserver: ResizeObserver | undefined
 
+function rememberActiveIndex(): void {
+	if (currentActiveIndex.value >= 0) lastActiveIndex = currentActiveIndex.value
+}
+
+function animateIn(): void {
+	const target = currentActiveIndex.value
+	if (target === -1) {
+		sliderReady.value = false
+		return
+	}
+
+	const parent = scrollContainer.value
+	if (!parent) {
+		requestAnimationFrame(animateIn)
+		return
+	}
+
+	const originIndex = Math.min(lastActiveIndex, filteredLinks.value.length - 1)
+	const origin = originIndex !== target ? getSliderPosition(originIndex) : null
+
+	if (origin) {
+		applySliderPosition(origin)
+		sliderReady.value = true
+		requestAnimationFrame(() => {
+			transitionsEnabled.value = true
+			requestAnimationFrame(() => {
+				positionSlider()
+				rememberActiveIndex()
+			})
+		})
+		return
+	}
+
+	// Same tab as before: grow the pill out of the centre of its tab.
+	const collapsed = getCollapsedPosition(target)
+	if (!collapsed) {
+		requestAnimationFrame(animateIn)
+		return
+	}
+	applySliderPosition(collapsed)
+	sliderReady.value = true
+	requestAnimationFrame(() => {
+		transitionsEnabled.value = true
+		requestAnimationFrame(() => {
+			positionSlider()
+			rememberActiveIndex()
+		})
+	})
+}
+
 onMounted(() => {
-	updateActiveTab()
+	nextTick(() => requestAnimationFrame(animateIn))
+
 	resizeObserver = new ResizeObserver(resetSliderPosition)
 	if (scrollContainer.value) {
 		resizeObserver.observe(scrollContainer.value)
@@ -333,6 +415,7 @@ onMounted(() => {
 
 onUnmounted(() => {
 	resizeObserver?.disconnect()
+	rememberActiveIndex()
 })
 
 watch(
@@ -366,10 +449,11 @@ watch(
 <style scoped>
 .navtabs-transition {
 	transition:
-		left 80ms cubic-bezier(0.4, 0, 0.2, 1) v-bind(leftDelay),
-		right 80ms cubic-bezier(0.4, 0, 0.2, 1) v-bind(rightDelay),
-		top 80ms cubic-bezier(0.4, 0, 0.2, 1) v-bind(topDelay),
-		bottom 80ms cubic-bezier(0.4, 0, 0.2, 1) v-bind(bottomDelay);
+		left 260ms cubic-bezier(0.34, 1.2, 0.64, 1) v-bind(leftDelay),
+		right 260ms cubic-bezier(0.34, 1.2, 0.64, 1) v-bind(rightDelay),
+		opacity 200ms ease,
+		top 260ms cubic-bezier(0.34, 1.2, 0.64, 1) v-bind(topDelay),
+		bottom 260ms cubic-bezier(0.34, 1.2, 0.64, 1) v-bind(bottomDelay);
 }
 
 .tab-color {

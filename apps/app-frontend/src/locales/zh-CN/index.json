@@ -1820,6 +1820,123 @@
   "app.screenshots.sort.oldest": {
     "message": "从旧到新"
   },
+  "app.settings.accounts.add": {
+    "message": "添加账户"
+  },
+  "app.settings.accounts.back": {
+    "message": "返回账户列表"
+  },
+  "app.settings.accounts.description": {
+    "message": "选择你下次启动 Minecraft 时使用的账户。若无特殊需求建议使用 Microsoft 账户"
+  },
+  "app.settings.accounts.kind.littleskin": {
+    "message": "LittleSkin 账户"
+  },
+  "app.settings.accounts.kind.microsoft": {
+    "message": "Microsoft 账户"
+  },
+  "app.settings.accounts.kind.offline": {
+    "message": "离线账户"
+  },
+  "app.settings.accounts.kind.yggdrasil": {
+    "message": "Yggdrasil 外置账户"
+  },
+  "app.settings.accounts.littleskin.button": {
+    "message": "登录到 LittleSkin"
+  },
+  "app.settings.accounts.littleskin.credentials": {
+    "message": "LittleSkin 账户或邮箱"
+  },
+  "app.settings.accounts.littleskin.description": {
+    "message": "它们注册简单且拥有正版账户的功能。但它们的安全性并不高，且仍然无法进入有正版验证的服务器"
+  },
+  "app.settings.accounts.littleskin.password": {
+    "message": "LittleSkin 密码"
+  },
+  "app.settings.accounts.littleskin.profile-hint": {
+    "message": "LittleSkin 需要先在 littleskin.cn 创建角色，登录后才能读取到账户档案。"
+  },
+  "app.settings.accounts.littleskin.title": {
+    "message": "LittleSkin 账户"
+  },
+  "app.settings.accounts.microsoft.button": {
+    "message": "登录到 Microsoft"
+  },
+  "app.settings.accounts.microsoft.description": {
+    "message": "Microsoft 账户是兼容性最高且安全性中等的账户，它是你购买 Minecraft 时使用的账户。Microsoft 账户需要外置登录器，AL 会自动帮你打开。"
+  },
+  "app.settings.accounts.microsoft.title": {
+    "message": "Microsoft 账户"
+  },
+  "app.settings.accounts.never-used": {
+    "message": "尚未游玩"
+  },
+  "app.settings.accounts.no-accounts": {
+    "message": "还没有 Minecraft 账户，添加一个即可开始游玩。"
+  },
+  "app.settings.accounts.no-results": {
+    "message": "没有匹配的账户。"
+  },
+  "app.settings.accounts.offline.button": {
+    "message": "添加离线账户"
+  },
+  "app.settings.accounts.offline.description": {
+    "message": "离线账户是安全性最高的账户，但它无法共享，添加皮肤或披风。如果你没有正版账户或与运行危险附加内容，请使用离线账户"
+  },
+  "app.settings.accounts.offline.hint": {
+    "message": "请不要使用中文和特殊字符，尽量使用字母，数字和下划线"
+  },
+  "app.settings.accounts.offline.placeholder": {
+    "message": "例如：Steve_123"
+  },
+  "app.settings.accounts.offline.title": {
+    "message": "离线账户"
+  },
+  "app.settings.accounts.picker-title": {
+    "message": "选择账户类型"
+  },
+  "app.settings.accounts.picker-warning": {
+    "message": "AL 不建议你使用第三方账户或离线账户，因为 Minecraft 本身并不兼容它们，在游玩过程中可能会出现问题，且第三方账户与离线账户可能无法进入某些服务器。"
+  },
+  "app.settings.accounts.play-accounts": {
+    "message": "游玩账户"
+  },
+  "app.settings.accounts.remove": {
+    "message": "移除账户"
+  },
+  "app.settings.accounts.search": {
+    "message": "搜索 Minecraft 账户"
+  },
+  "app.settings.accounts.selected": {
+    "message": "使用中"
+  },
+  "app.settings.accounts.settings-section": {
+    "message": "账户设置"
+  },
+  "app.settings.accounts.title": {
+    "message": "Minecraft 账户"
+  },
+  "app.settings.accounts.usage": {
+    "message": "利用率"
+  },
+  "app.settings.accounts.warning": {
+    "message": "Microsoft Minecraft 账户不是绝对安全的，一些人可能通过特殊方式窃取你的 Microsoft 账户。在运行未经 Modrinth、CurseForge 许可的 Mods 或整合包时，请优先使用离线账户。"
+  },
+  "app.settings.accounts.yggdrasil.account": {
+    "message": "账户或邮箱"
+  },
+  "app.settings.accounts.yggdrasil.api": {
+    "message": "Yggdrasil API 地址"
+  },
+  "app.settings.accounts.yggdrasil.button": {
+    "message": "使用 Yggdrasil 外置登录"
+  },
+  "app.settings.accounts.yggdrasil.password": {
+    "message": "密码"
+  },
+  "app.settings.accounts.yggdrasil.title": {
+    "message": "使用其他 Yggdrasil 外置登录"
+  },
   "app.settings.app-version": {
     "message": "Alemona Launcher {version}"
   },
@@ -1834,6 +1951,9 @@
   },
   "app.settings.categories.instance-defaults": {
     "message": "实例默认"
+  },
+  "app.settings.categories.privacy": {
+    "message": "隐私与保护"
   },
   "app.settings.categories.system": {
     "message": "系统"
@@ -3337,6 +3457,9 @@
   },
   "app.settings.tabs.launch-hooks": {
     "message": "启动钩柄"
+  },
+  "app.settings.tabs.minecraft-accounts": {
+    "message": "Minecraft 账户"
   },
   "app.settings.tabs.privacy": {
     "message": "隐私"

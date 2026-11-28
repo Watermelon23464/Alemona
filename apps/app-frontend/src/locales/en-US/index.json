@@ -1817,6 +1817,30 @@
   "app.screenshots.sort.oldest": {
     "message": "Oldest"
   },
+  "app.settings.accounts.kind.yggdrasil": {
+    "message": "Yggdrasil account"
+  },
+  "app.settings.accounts.littleskin.button": {
+    "message": "Sign in to LittleSkin"
+  },
+  "app.settings.accounts.littleskin.description": {
+    "message": "They register easily and offer the same features as a Mojang account. Their security is not high, and they still cannot join servers that require a Mojang account."
+  },
+  "app.settings.accounts.littleskin.profile-hint": {
+    "message": "LittleSkin needs a player profile: create your character on littleskin.cn before signing in here."
+  },
+  "app.settings.accounts.littleskin.title": {
+    "message": "LittleSkin account"
+  },
+  "app.settings.accounts.never-used": {
+    "message": "Not played yet"
+  },
+  "app.settings.accounts.offline.placeholder": {
+    "message": "For example: Steve_123"
+  },
+  "app.settings.accounts.settings-section": {
+    "message": "Account settings"
+  },
   "app.settings.app-version": {
     "message": "Alemona Launcher {version}"
   },
@@ -1831,6 +1855,9 @@
   },
   "app.settings.categories.instance-defaults": {
     "message": "Instance defaults"
+  },
+  "app.settings.categories.privacy": {
+    "message": "Privacy and protection"
   },
   "app.settings.categories.system": {
     "message": "System"
@@ -3340,6 +3367,9 @@
   },
   "app.settings.tabs.launch-hooks": {
     "message": "Launch hooks"
+  },
+  "app.settings.tabs.minecraft-accounts": {
+    "message": "Minecraft accounts"
   },
   "app.settings.tabs.privacy": {
     "message": "Privacy"

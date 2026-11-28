@@ -2,7 +2,7 @@
 import { defineMessages, useVIntl } from '@modrinth/ui'
 import { useQuery } from '@tanstack/vue-query'
 import { getVersion } from '@tauri-apps/api/app'
-import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 
 import LibrarySection from '@/components/ui/library/index.vue'
 import { useAppSettings } from '@/composables/use-app-settings.ts'
@@ -157,9 +157,36 @@ const welcomeRender = computed(() =>
 // the full feed instead of growing the column.
 const NEWS_PAGE_SIZE = 3
 const newsExpanded = ref(false)
+const newsBodyRef = ref<HTMLElement | null>(null)
+const newsBodyHeight = ref(0)
+
+function measureNewsBody(): void {
+	if (newsExpanded.value || !newsBodyRef.value) return
+	const height = newsBodyRef.value.scrollHeight
+	if (height > 0) newsBodyHeight.value = height
+}
+
 const visibleNews = computed(() =>
 	newsExpanded.value ? news.value : news.value.slice(0, NEWS_PAGE_SIZE),
 )
+
+watch(
+	() => [newsExpanded.value, visibleNews.value.length] as const,
+	async () => {
+		await nextTick()
+		measureNewsBody()
+	},
+	{ immediate: true },
+)
+
+onMounted(() => {
+	measureNewsBody()
+	window.addEventListener('resize', measureNewsBody)
+})
+
+onBeforeUnmount(() => {
+	window.removeEventListener('resize', measureNewsBody)
+})
 
 function toggleNewsExpanded() {
 	newsExpanded.value = !newsExpanded.value
@@ -249,15 +276,17 @@ await instancesQuery.suspense().catch(() => {})
 
 			<aside
 				v-if="appSettings.getFeatureFlag('home_news_menu')"
-				class="flex min-w-0 flex-1 shrink-0 flex-col gap-4 self-start p-1"
+				class="flex w-[21rem] shrink-0 flex-col gap-4 self-start p-1 xl:w-[23rem]"
 			>
 				<h2 class="m-0 text-base font-medium text-primary">
 					{{ formatMessage(messages.news) }}
 				</h2>
 
 				<div
+					ref="newsBodyRef"
 					class="flex min-h-0 flex-col gap-4"
-					:class="newsExpanded ? 'max-h-[60vh] overflow-y-auto pr-1' : ''"
+					:class="newsExpanded ? 'overflow-y-auto pr-1' : ''"
+					:style="newsBodyHeight ? { height: `${newsBodyHeight}px` } : undefined"
 				>
 					<p v-if="news.length === 0" class="m-0 text-sm text-secondary">
 						{{ formatMessage(messages.newsEmpty) }}
@@ -275,7 +304,8 @@ await instancesQuery.suspense().catch(() => {})
 							v-if="item.image"
 							:src="item.image"
 							alt=""
-							class="aspect-video w-full rounded-xl border border-solid border-button-border object-cover"
+							class="w-full shrink-0 rounded-xl border border-solid border-button-border"
+							@load="measureNewsBody"
 						/>
 						<div class="flex flex-col gap-2">
 							<h3 class="m-0 text-base leading-tight text-primary group-hover:underline">

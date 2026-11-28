@@ -18,6 +18,12 @@ fn main() {
                         "get_default_user",
                         "set_default_user",
                         "get_users",
+                        "add_offline_user",
+                        "account_metas",
+                        "register_offline_account",
+                        "register_microsoft_account",
+                        "record_account_usage",
+                        "add_yggdrasil_user",
                     ])
                     .default_permission(
                         DefaultPermissionRule::AllowAllCommands,

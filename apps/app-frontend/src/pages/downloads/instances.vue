@@ -6,7 +6,6 @@ import {
 	defineMessages,
 	FilterPills,
 	Input,
-	NavTabs,
 	useVIntl,
 } from '@modrinth/ui'
 import { computed, onMounted, ref } from 'vue'
@@ -46,16 +45,6 @@ const messages = defineMessages({
 		defaultMessage: 'No versions match your filters.',
 	},
 })
-
-const tabs = computed(() => [
-	{ label: formatMessage(messages.tabInstances), href: '/browse/instance' },
-	{ label: formatMessage(messages.tabModpacks), href: '/browse/modpack' },
-	{ label: formatMessage(messages.tabMods), href: '/browse/mod' },
-	{ label: formatMessage(messages.tabResourcePacks), href: '/browse/resourcepack' },
-	{ label: formatMessage(messages.tabDataPacks), href: '/browse/datapack' },
-	{ label: formatMessage(messages.tabShaders), href: '/browse/shader' },
-	{ label: formatMessage(messages.tabServers), href: '/browse/server' },
-])
 
 const sortOptions = computed<ComboboxOption<'newest' | 'oldest'>[]>(() => [
 	{ value: 'newest', label: formatMessage(messages.sortNewest) },
@@ -117,11 +106,7 @@ onMounted(async () => {
 </script>
 
 <template>
-	<div class="flex w-full flex-col gap-4 p-4 sm:gap-5 sm:p-6">
-		<div class="-mx-1 overflow-x-auto px-1 pb-1">
-			<NavTabs :links="tabs" replace class="w-fit" />
-		</div>
-
+	<div class="flex w-full flex-col gap-4 px-4 pb-6 pt-2 sm:gap-5 sm:px-6">
 		<div class="flex flex-col gap-3">
 			<Input
 				v-model="query"

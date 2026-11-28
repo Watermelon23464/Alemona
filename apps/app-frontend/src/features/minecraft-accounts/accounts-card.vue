@@ -1,15 +1,10 @@
 <template>
-	<AddAccountModal
-		ref="accountModal"
-		@microsoft="login()"
-		@created="(account) => setAccount(account)"
-	/>
 	<div
 		v-if="accounts.length === 0"
 		class="flex flex-col gap-3 bg-button-bg border border-solid border-surface-5 rounded-xl p-3 mt-2"
 	>
 		<span>{{ formatMessage(messages.notSignedIn) }}</span>
-		<Button type="colored" color="brand" :disabled="loginDisabled" @click="accountModal?.show()">
+		<Button type="colored" color="brand" :disabled="loginDisabled" @click="goAddAccount()">
 			<LogInIcon v-if="!loginDisabled" />
 			<SpinnerIcon v-else class="animate-spin" />
 			{{ formatMessage(messages.signInToMinecraft) }}
@@ -80,7 +75,7 @@
 					v-if="accounts.length > 0"
 					class="w-full !bg-button-bg !text-primary ![box-shadow:var(--shadow-button)]"
 					:disabled="loginDisabled"
-					@click="accountModal?.show()"
+					@click="goAddAccount()"
 				>
 					<PlusIcon />
 					{{ formatMessage(messages.addAccount) }}
@@ -109,24 +104,32 @@ import {
 	useVIntl,
 } from '@modrinth/ui'
 import type { Ref } from 'vue'
-import { computed, onUnmounted, ref } from 'vue'
+import { computed, onUnmounted, ref, watch } from 'vue'
+import { useRouter } from 'vue-router'
 
-import AddAccountModal from '@/features/minecraft-accounts/add-account-modal.vue'
 import { useAppEvent } from '@/composables/use-app-event'
 import { handleSevereError } from '@/composables/use-error.js'
+import { accountsRevision, notifyAccountsChanged } from '@/features/minecraft-accounts/sync'
 import { trackEvent } from '@/helpers/analytics'
 import {
+	account_metas,
 	get_default_user,
 	login as login_flow,
 	remove_user,
 	set_default_user,
 	users,
 } from '@/helpers/auth'
+import { accountAvatarUrl } from '@/helpers/minecraft-account-avatar'
 import { getPlayerHeadUrl } from '@/helpers/rendering/player-head'
 import type { Skin } from '@/helpers/skins'
 import { get_available_skins } from '@/helpers/skins'
 
 const { formatMessage } = useVIntl()
+const router = useRouter()
+
+function goAddAccount(): void {
+	void router.push('/settings/minecraft-accounts/add')
+}
 const { handleError } = injectNotificationManager()
 
 const emit = defineEmits<{
@@ -141,7 +144,7 @@ type MinecraftCredential = {
 }
 
 const accounts: Ref<MinecraftCredential[]> = ref([])
-const accountModal = ref<InstanceType<typeof AddAccountModal> | null>(null)
+const accountMetas = ref<Record<string, { kind?: string; api_root?: string }>>({})
 const loginDisabled = ref(false)
 const defaultUser = ref<string | undefined>()
 const equippedSkin = ref<Skin | null>(null)
@@ -165,6 +168,10 @@ onUnmounted(() => {
 
 async function refreshValues() {
 	defaultUser.value = await get_default_user().catch(handleError)
+	const metas = await account_metas().catch(() => [])
+	accountMetas.value = Object.fromEntries(
+		(Array.isArray(metas) ? metas : []).map((meta: { uuid: string }) => [meta.uuid, meta]),
+	)
 	const userList = await users().catch(handleError)
 	accounts.value = Array.isArray(userList) ? [...userList] : []
 	accounts.value.sort((a, b) => (a.profile?.name ?? '').localeCompare(b.profile?.name ?? ''))
@@ -214,10 +221,9 @@ const avatarUrl = computed(() => {
 		if (cachedUrl) {
 			return cachedUrl
 		}
-		return `https://mc-heads.net/avatar/${equippedSkin.value.texture_key}/128`
 	}
 	if (selectedAccount.value?.profile?.id) {
-		return `https://mc-heads.net/avatar/${selectedAccount.value.profile.id}/128`
+		return getAccountAvatarUrl(selectedAccount.value)
 	}
 	return 'https://launcher-files.modrinth.com/assets/steve_head.png'
 })
@@ -232,12 +238,19 @@ function getAccountAvatarUrl(account: MinecraftCredential) {
 			return cachedUrl
 		}
 	}
-	return `https://mc-heads.net/avatar/${account.profile.id}/128`
+	const meta = accountMetas.value[account.profile.id]
+	return accountAvatarUrl({
+		uuid: account.profile.id,
+		name: account.profile.name,
+		kind: meta?.kind,
+		apiRoot: meta?.api_root,
+	})
 }
 
 async function setAccount(account: MinecraftCredential) {
 	defaultUser.value = account.profile.id
 	await set_default_user(account.profile.id).catch(handleError)
+	notifyAccountsChanged()
 	await refreshValues()
 	emit('change')
 }
@@ -256,6 +269,7 @@ async function login() {
 
 async function logout(id: string) {
 	await remove_user(id).catch(handleError)
+	notifyAccountsChanged()
 	await refreshValues()
 	if (!selectedAccount.value && accounts.value.length > 0) {
 		await setAccount(accounts.value[0])
@@ -264,6 +278,10 @@ async function logout(id: string) {
 	}
 	trackEvent('AccountLogOut')
 }
+
+watch(accountsRevision, () => {
+	void refreshValues()
+})
 
 useAppEvent('process', async (e) => {
 	if (e.event === 'launched') {

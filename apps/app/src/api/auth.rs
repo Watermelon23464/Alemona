@@ -15,6 +15,11 @@ pub fn init<R: Runtime>() -> TauriPlugin<R> {
             set_default_user,
             get_users,
             add_offline_user,
+            account_metas,
+            register_offline_account,
+            register_microsoft_account,
+            record_account_usage,
+            add_yggdrasil_user,
         ])
         .build()
 }
@@ -110,4 +115,59 @@ pub async fn get_users() -> Result<Vec<Credentials>> {
 #[tauri::command]
 pub async fn add_offline_user(username: String) -> Result<Credentials> {
     Ok(minecraft_auth::add_offline_user(username).await?)
+}
+
+/// Metadata (kind, provider, usage) for every known Minecraft account
+#[tauri::command]
+pub async fn account_metas() -> Result<Vec<theseus::accounts::AccountMeta>> {
+    Ok(theseus::accounts::load_all())
+}
+
+/// Marks an offline account as such, so the list can label it
+#[tauri::command]
+pub async fn register_offline_account(user: uuid::Uuid) -> Result<()> {
+    theseus::accounts::upsert(theseus::accounts::AccountMeta {
+        uuid: user.to_string(),
+        kind: theseus::accounts::AccountKind::Offline,
+        api_root: None,
+        usage: 0,
+        last_used: None,
+    })?;
+    Ok(())
+}
+
+/// Marks a Microsoft account as such
+#[tauri::command]
+pub async fn register_microsoft_account(user: uuid::Uuid) -> Result<()> {
+    theseus::accounts::upsert(theseus::accounts::AccountMeta {
+        uuid: user.to_string(),
+        kind: theseus::accounts::AccountKind::Microsoft,
+        api_root: None,
+        usage: 0,
+        last_used: None,
+    })?;
+    Ok(())
+}
+
+/// Counts one use of an account and returns its updated metadata
+#[tauri::command]
+pub async fn record_account_usage(user: uuid::Uuid) -> Result<theseus::accounts::AccountMeta> {
+    Ok(theseus::accounts::record_usage(user)?)
+}
+
+/// Signs in to a Yggdrasil compatible provider (LittleSkin included)
+#[tauri::command]
+pub async fn add_yggdrasil_user(
+    api_root: String,
+    username: String,
+    password: String,
+    kind: String,
+) -> Result<Credentials> {
+    let kind = match kind.as_str() {
+        "littleskin" => theseus::accounts::AccountKind::LittleSkin,
+        "offline" => theseus::accounts::AccountKind::Offline,
+        "microsoft" => theseus::accounts::AccountKind::Microsoft,
+        _ => theseus::accounts::AccountKind::Yggdrasil,
+    };
+    Ok(theseus::accounts::add_yggdrasil_account(&api_root, &username, &password, kind).await?)
 }

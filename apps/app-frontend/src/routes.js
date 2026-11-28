@@ -67,12 +67,26 @@ export default new createRouter({
 			],
 		},
 		{
-			path: '/browse/instance',
-			name: 'Download instance',
-			component: () => import('@/pages/downloads/instances.vue'),
-			meta: {
-				saveScroll: true,
-			},
+			path: '/browse',
+			component: () => import('@/pages/downloads/layout.vue'),
+			children: [
+				{
+					path: 'instance',
+					name: 'Download instance',
+					component: () => import('@/pages/downloads/instances.vue'),
+					meta: {
+						saveScroll: true,
+					},
+				},
+				{
+					path: ':projectType',
+					name: 'Discover content',
+					component: () => import('@/pages/Browse.vue'),
+					meta: {
+						saveScroll: true,
+					},
+				},
+			],
 		},
 		{
 			path: '/browse/instance/:version/:loader',
@@ -86,13 +100,16 @@ export default new createRouter({
 			component: () => import('@/pages/downloads/version.vue'),
 			props: true,
 		},
+
 		{
-			path: '/browse/:projectType',
-			name: 'Discover content',
-			component: () => import('@/pages/Browse.vue'),
-			meta: {
-				saveScroll: true,
-			},
+			path: '/settings/minecraft-accounts/add',
+			name: 'SettingsAddMinecraftAccount',
+			component: () => import('@/pages/Settings.vue'),
+		},
+		{
+			path: '/settings/:tabId',
+			name: 'SettingsTab',
+			component: () => import('@/pages/Settings.vue'),
 		},
 		{
 			path: '/settings',

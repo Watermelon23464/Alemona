@@ -57,6 +57,12 @@ pub async fn run(
         .await?
         .ok_or(ErrorKind::NotLoggedIn)?;
 
+    if let Err(error) =
+        crate::accounts::record_usage(default_account.offline_profile.id)
+    {
+        tracing::warn!("failed to record account usage: {error}");
+    }
+
     run_credentials(instance_id, &default_account, quick_play_type).await
 }
 

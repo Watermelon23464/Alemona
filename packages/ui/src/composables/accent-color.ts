@@ -242,7 +242,10 @@ export function initAccentColor(): void {
 	if (defaults.primary) primaryAccent.value = defaults.primary
 	if (defaults.secondary) secondaryAccent.value = defaults.secondary
 
-	if (typeof localStorage === 'undefined') return
+	if (typeof localStorage === 'undefined') {
+		void loadFromFile({ primary: false, secondary: false })
+		return
+	}
 	const storedPrimary = localStorage.getItem(STORAGE_KEY)
 	const storedSecondary = localStorage.getItem(STORAGE_SECONDARY_KEY)
 	if (storedPrimary) primaryAccent.value = storedPrimary
@@ -253,7 +256,8 @@ export function initAccentColor(): void {
 		applyAccentColors(primaryAccent.value, secondaryAccent.value)
 	}
 
-	void loadFromFile({ primary: !!storedPrimary, secondary: !!storedSecondary })
+	// The JSON file is the durable record, so it always wins over webview storage
+	void loadFromFile({ primary: false, secondary: false })
 }
 
 interface StoredColours {

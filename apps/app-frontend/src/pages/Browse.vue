@@ -1276,7 +1276,7 @@ provideBrowseManager({
 		query: getProjectBrowseQuery(),
 	}),
 	selectableProjectTypes,
-	showProjectTypeTabs: computed(() => !isServerContext.value),
+	showProjectTypeTabs: computed(() => false),
 	variant: 'app',
 	getCardActions,
 	installContext,
@@ -1335,7 +1335,7 @@ provideBrowseManager({
 </script>
 
 <template>
-	<div class="flex flex-col gap-2 p-6">
+	<div class="flex flex-col gap-2 px-4 pb-6 sm:px-6">
 		<BrowsePageLayout>
 			<template #after>
 				<ContextMenu ref="contextMenuRef" :label="formatMessage(messages.projectActionsLabel)">

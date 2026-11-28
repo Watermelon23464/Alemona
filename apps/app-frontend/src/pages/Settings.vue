@@ -8,6 +8,7 @@ import {
 	RefreshCwIcon,
 	Settings2Icon,
 	ToggleRightIcon,
+	UserIcon,
 	WindowIcon,
 	WrenchIcon,
 } from '@modrinth/assets'
@@ -29,7 +30,8 @@ import {
 import { useMutation, useQuery, useQueryClient } from '@tanstack/vue-query'
 import { getVersion } from '@tauri-apps/api/app'
 import { platform as getOsPlatform, version as getOsVersion } from '@tauri-apps/plugin-os'
-import { computed, nextTick, ref, watch } from 'vue'
+import { computed, nextTick, onMounted, ref, watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 
 import AlLogo from '@/components/ui/al-logo.vue'
 import { useAppSettings } from '@/composables/use-app-settings.ts'
@@ -46,6 +48,8 @@ import LanguageSettings from '@/features/settings/display/language-settings.vue'
 import JavaAndMemorySettings from '@/features/settings/instance-defaults/java-and-memory-settings/index.vue'
 import LaunchHooksSettings from '@/features/settings/instance-defaults/launch-hooks-settings.vue'
 import WindowSettings from '@/features/settings/instance-defaults/window-settings.vue'
+import AddMinecraftAccountView from '@/features/settings/privacy/add-minecraft-account-view.vue'
+import MinecraftAccountsSettings from '@/features/settings/privacy/minecraft-accounts.vue'
 import SyncingSettings from '@/features/settings/syncing/syncing-settings.vue'
 import ResourceManagementSettings from '@/features/settings/system/resource-management-settings/index.vue'
 import TroubleshootingSettings from '@/features/settings/system/troubleshooting-settings.vue'
@@ -58,6 +62,8 @@ const { formatMessage } = useVIntl()
 const { handleError } = injectNotificationManager()
 const appSettings = useAppSettings()
 const breadcrumbManager = injectBreadcrumbManager()
+const route = useRoute()
+const router = useRouter()
 
 const messages = defineMessages({
 	title: { id: 'app.settings.title', defaultMessage: 'Settings' },
@@ -78,6 +84,14 @@ const messages = defineMessages({
 		id: 'app.settings.theme-prompt.secondary',
 		defaultMessage: 'Secondary',
 	},
+	accountsBreadcrumb: {
+		id: 'app.settings.tabs.minecraft-accounts',
+		defaultMessage: 'Minecraft accounts',
+	},
+	addAccountBreadcrumb: {
+		id: 'app.settings.accounts.add-page-title',
+		defaultMessage: 'Add Minecraft account',
+	},
 	themePromptConfirm: {
 		id: 'app.settings.theme-prompt.confirm',
 		defaultMessage: 'Adapt my accent colour',
@@ -91,6 +105,7 @@ const tabCategories = defineMessages({
 		defaultMessage: 'Instance defaults',
 	},
 	system: { id: 'app.settings.categories.system', defaultMessage: 'System' },
+	privacy: { id: 'app.settings.categories.privacy', defaultMessage: 'Privacy and protection' },
 })
 
 const tabs = [
@@ -101,6 +116,7 @@ const tabs = [
 		}),
 		category: tabCategories.display,
 		content: AppearanceSettings,
+		slug: 'appearance',
 		icon: PaintbrushIcon,
 	},
 	{
@@ -110,6 +126,7 @@ const tabs = [
 		}),
 		category: tabCategories.display,
 		content: FeaturesSettings,
+		slug: 'features',
 		icon: Settings2Icon,
 	},
 	{
@@ -119,6 +136,7 @@ const tabs = [
 		}),
 		category: tabCategories.display,
 		content: BehaviorSettings,
+		slug: 'behavior',
 		icon: ToggleRightIcon,
 	},
 	{
@@ -128,6 +146,7 @@ const tabs = [
 		}),
 		category: tabCategories.display,
 		content: LanguageSettings,
+		slug: 'language',
 		icon: LanguagesIcon,
 		badge: commonMessages.beta,
 	},
@@ -135,6 +154,7 @@ const tabs = [
 		name: commonSettingsMessages.featureFlags,
 		category: tabCategories.display,
 		content: FeatureFlagSettings,
+		slug: 'feature-flags',
 		icon: ToggleRightIcon,
 		developerOnly: true,
 	},
@@ -145,6 +165,7 @@ const tabs = [
 		}),
 		category: tabCategories.instanceDefaults,
 		content: JavaAndMemorySettings,
+		slug: 'java-and-memory',
 		icon: CoffeeIcon,
 	},
 	{
@@ -154,6 +175,7 @@ const tabs = [
 		}),
 		category: tabCategories.instanceDefaults,
 		content: WindowSettings,
+		slug: 'window',
 		icon: WindowIcon,
 	},
 	{
@@ -163,6 +185,7 @@ const tabs = [
 		}),
 		category: tabCategories.instanceDefaults,
 		content: LaunchHooksSettings,
+		slug: 'launch-hooks',
 		icon: CodeIcon,
 	},
 	{
@@ -172,6 +195,7 @@ const tabs = [
 		}),
 		category: tabCategories.instanceDefaults,
 		content: SyncingSettings,
+		slug: 'syncing',
 		icon: RefreshCwIcon,
 	},
 	{
@@ -181,6 +205,7 @@ const tabs = [
 		}),
 		category: tabCategories.system,
 		content: ResourceManagementSettings,
+		slug: 'resources',
 		icon: GaugeIcon,
 	},
 	{
@@ -190,21 +215,51 @@ const tabs = [
 		}),
 		category: tabCategories.system,
 		content: TroubleshootingSettings,
+		slug: 'troubleshooting',
 		icon: WrenchIcon,
+	},
+	{
+		name: defineMessage({
+			id: 'app.settings.tabs.minecraft-accounts',
+			defaultMessage: 'Minecraft accounts',
+		}),
+		category: tabCategories.privacy,
+		content: MinecraftAccountsSettings,
+		slug: 'minecraft-accounts',
+		icon: UserIcon,
 	},
 ]
 
 const visibleTabs = computed(() => tabs.filter((tab) => !tab.developerOnly || appSettings.devMode))
-const selected = ref(0)
-const currentTab = computed(
-	() => visibleTabs.value[Math.min(selected.value, visibleTabs.value.length - 1)],
+const showingAddAccount = computed(() => route.path.startsWith('/settings/minecraft-accounts/add'))
+const accountsTabIndex = computed(() =>
+	visibleTabs.value.findIndex((tab) => String(tab.name.id).includes('minecraft-accounts')),
 )
+const activeTabIndex = ref(0)
+const currentTab = computed(
+	() => visibleTabs.value[Math.min(activeTabIndex.value, visibleTabs.value.length - 1)],
+)
+const paneDirection = ref<'left' | 'right'>('right')
+
+watch(
+	() => showingAddAccount.value,
+	(showAdd) => {
+		paneDirection.value = showAdd ? 'right' : 'left'
+	},
+)
+
+const shownTab = computed(() =>
+	showingAddAccount.value && accountsTabIndex.value >= 0
+		? visibleTabs.value[accountsTabIndex.value]
+		: currentTab.value,
+)
+
 const startsCategory = (index) =>
 	!!visibleTabs.value[index]?.category &&
 	visibleTabs.value[index]?.category?.id !== visibleTabs.value[index - 1]?.category?.id
 
 watch(visibleTabs, (next) => {
-	if (selected.value > next.length - 1) selected.value = 0
+	if (activeTabIndex.value > next.length - 1) activeTabIndex.value = 0
 })
 
 const unsavedChangesPopup = ref<{ nudge: () => void } | null>(null)
@@ -234,11 +289,38 @@ function canLeaveCurrentTab(): boolean {
 	return false
 }
 
-function selectTab(index: number) {
-	if (index === selected.value) return
-	if (!canLeaveCurrentTab()) return
-	selected.value = index
+function isTabActive(tab: { slug?: string }): boolean {
+	if (showingAddAccount.value) return tab.slug === 'minecraft-accounts'
+	return visibleTabs.value[activeTabIndex.value]?.slug === tab.slug
 }
+
+function selectTab(index: number) {
+	if (index === activeTabIndex.value) return
+	if (!canLeaveCurrentTab()) return
+	const tab = visibleTabs.value[index]
+	if (!tab) return
+	activeTabIndex.value = index
+	void router.replace(`/settings/${tab.slug}`)
+}
+
+function applyRouteTab(): void {
+	const slug = typeof route.params.tabId === 'string' ? route.params.tabId : null
+	if (!slug) return
+	const index = visibleTabs.value.findIndex((tab) => tab.slug === slug)
+	if (index >= 0) activeTabIndex.value = index
+}
+
+watch(
+	() => route.params.tabId,
+	() => applyRouteTab(),
+)
+
+onMounted(() => applyRouteTab())
+
+// entering the add page keeps the accounts tab highlighted
+watch(showingAddAccount, (showAdd) => {
+	if (showAdd && accountsTabIndex.value >= 0) activeTabIndex.value = accountsTabIndex.value
+})
 
 function resetUnsavedChanges() {
 	unsavedChangesController.value?.reset()
@@ -343,11 +425,54 @@ provideAppSettingsModal({
 	},
 })
 
-breadcrumbManager.reset({
-	slot: 'settings',
-	id: () => 'settings',
-	label: () => formatMessage(messages.title),
-})
+watch(
+	() => [showingAddAccount.value, route.params.tabId],
+	() => {
+		const showAdd = showingAddAccount.value
+		const root = breadcrumbManager.reset({
+			slot: 'settings',
+			id: () => 'settings',
+			label: () => formatMessage(messages.title),
+			to: () => '/settings',
+		})
+		const tab = visibleTabs.value[activeTabIndex.value]
+		if (!showAdd && tab) {
+			breadcrumbManager.push(
+				{
+					slot: 'settings-tab',
+					id: () => `settings-${tab.slug}`,
+					label: () => formatMessage(tab.name),
+					to: () => `/settings/${tab.slug}`,
+				},
+				{ parent: root },
+			)
+		}
+		if (showAdd) {
+			const accounts = breadcrumbManager.push(
+				{
+					slot: 'settings-accounts',
+					id: () => 'settings-accounts',
+					label: () => formatMessage(messages.accountsBreadcrumb),
+					to: () => '/settings/minecraft-accounts',
+				},
+				{ parent: root },
+			)
+			breadcrumbManager.push(
+				{
+					slot: 'settings-accounts-add',
+					id: () => 'settings-accounts-add',
+					label: () => formatMessage(messages.addAccountBreadcrumb),
+				},
+				{ parent: accounts },
+			)
+		}
+	},
+	{ immediate: true },
+)
+
+function leaveAddPage(): void {
+	void router.push('/settings/minecraft-accounts')
+}
 </script>
 
 <template>
@@ -371,13 +496,17 @@ breadcrumbManager.reset({
 							type="button"
 							class="flex min-w-0 shrink-0 cursor-pointer items-center gap-2 rounded-[14px] border-none px-4 py-2.5 text-left text-base font-semibold leading-5 no-underline transition-all active:scale-[0.94]"
 							:class="
-								selected === index
+								isTabActive(tab)
 									? 'bg-[color-mix(in_srgb,var(--color-purple-400)_30%,transparent)] text-brand'
 									: 'bg-transparent text-primary hover:bg-surface-4 hover:text-contrast'
 							"
 							@click="selectTab(index)"
 						>
-							<component :is="tab.icon" class="size-5 flex-shrink-0" />
+							<component
+								:is="tab.icon"
+								class="size-5 flex-shrink-0"
+								:class="isTabActive(tab) ? 'text-brand' : ''"
+							/>
 							<span class="min-w-0 flex-1 truncate">{{ formatMessage(tab.name) }}</span>
 							<span
 								v-if="tab.badge"
@@ -414,13 +543,18 @@ breadcrumbManager.reset({
 				</div>
 			</div>
 
-			<div
-				class="relative min-w-0 flex-1 overflow-hidden rounded-[20px] border border-solid border-surface-5 bg-surface-2"
-			>
-				<div class="overscroll-contain">
-					<div class="flow-root min-h-full px-6 pb-6 pt-6">
-						<component :is="currentTab.content" />
-					</div>
+			<div class="min-w-0 flex-1 rounded-2xl border border-solid border-surface-5 bg-surface-2">
+				<div
+					:key="showingAddAccount ? 'add-account' : String(shownTab?.slug ?? 'tab')"
+					class="pane-enter px-6 pb-6 pt-6"
+					:class="paneDirection === 'left' ? 'pane-from-left' : 'pane-from-right'"
+				>
+					<AddMinecraftAccountView
+						v-if="showingAddAccount"
+						@back="leaveAddPage"
+						@created="leaveAddPage"
+					/>
+					<component :is="shownTab.content" v-else />
 				</div>
 			</div>
 		</div>
@@ -484,3 +618,34 @@ breadcrumbManager.reset({
 		</div>
 	</div>
 </template>
+<style scoped>
+@keyframes pane-in-right {
+	from {
+		opacity: 0;
+		transform: translateX(22px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes pane-in-left {
+	from {
+		opacity: 0;
+		transform: translateX(-22px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+.pane-enter.pane-from-right {
+	animation: pane-in-right 220ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pane-enter.pane-from-left {
+	animation: pane-in-left 220ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+</style>

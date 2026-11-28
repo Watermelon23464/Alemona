@@ -10,6 +10,7 @@ and launching Modrinth mod packs
 #[macro_use]
 mod util;
 
+pub mod accounts;
 mod api;
 mod error;
 mod event;
